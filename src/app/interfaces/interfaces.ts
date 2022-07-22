@@ -68,3 +68,12 @@ export class CreatePapper extends CreateVegetable{
     this.spiciness = obj.spiciness;
   }
 }
+
+export class CreateFruit extends CreateProduct{
+  fruitRating: number;
+
+  constructor(obj:Fruit){
+    super(obj);
+    this.fruitRating = obj.fruitRating;
+  }
+}
