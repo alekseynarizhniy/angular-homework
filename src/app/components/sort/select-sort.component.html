@@ -1,0 +1,5 @@
+<select class="select_menu select_menu_{{type}}" (change)="onChange(selctOpt.value)" #selctOpt>
+  <option class="select_item" value="ALL" disabled selected>{{type}}</option>
+  <option class="select_item" value="ALL">ALL</option>
+  <option class="select_item" *ngFor="let item of listMenu;"   value="{{item}}">{{item[0].toUpperCase()+item.slice(1)}}</option>
+</select>

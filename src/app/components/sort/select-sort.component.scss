@@ -1,0 +1,20 @@
+:host {
+  margin-bottom: 30px;
+  font-size: 22px;
+  background-color: inherit;
+
+  .select_menu {
+    font-size: inherit;
+    background-color: inherit;
+    border: 2px solid dimgray;
+
+    :active {
+      background-color: inherit;
+    }
+
+    .select_item {
+      font-size: inherit;
+      background-color: inherit;
+    }
+  }
+}

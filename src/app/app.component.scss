@@ -1,0 +1,22 @@
+.main {
+  width: 100%;
+  display: flex;
+
+  .leftmenu {
+    display: flex;
+    min-width: 20%;
+    background-color: burlywood;
+    border: 2px solid dimgray;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .cardlist {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid dimgray;
+    justify-content: end;
+  }
+}

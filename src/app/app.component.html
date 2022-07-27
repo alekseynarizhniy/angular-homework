@@ -1,2 +1,19 @@
+<div class="main">
+  <div class="leftmenu">
+    <h2>Sorting settings</h2>
+    <app-sort
+      [listMenu]="getArray(countries.values())"
+      [type]="country"
+      (newItemEvent)="chosenElement($event, country)"
+    ></app-sort>
 
-<p>You bought 7 {{newPapper.name }} for {{newPapper.getCost(7)}}</p>
+    <app-sort
+      [listMenu]="getArray(types.values())"
+      [type]="typeProduct"
+      (newItemEvent)="chosenElement($event, typeProduct)"
+    ></app-sort>
+  </div>
+  <div class="cardlist">
+    <app-card *ngFor="let item of filteredGoods" [product]="item"></app-card>
+  </div>
+</div>
