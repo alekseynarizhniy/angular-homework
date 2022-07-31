@@ -1,6 +1,6 @@
 :host {
   width: 100%;
-  border-bottom: 2px solid dimgray;
+  border-bottom: 2px solid #424242;
   display: flex;
   padding: -20px;
   align-items: center;
@@ -27,6 +27,20 @@
         max-height: 35px;
         max-width: 35px;
         font-size: 15px;
+      }
+    }
+
+    .btn-add{
+      width: 90px;
+      height: 30px;
+      color: white;
+      border-radius: 5px;
+      background-color: #B41655;
+      margin-bottom: 20px;
+
+      &:hover{
+        color: black;
+        background-color: bisque;
       }
     }
   }

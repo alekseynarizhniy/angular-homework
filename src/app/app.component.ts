@@ -1,55 +1,30 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import { ProductWrapper } from './classes/Product';
-import { GROCERY } from './goods';
+import { GoodsService } from './services/goods.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  country = 'Country';
-  typeProduct = 'Type';
-  goods: Array<ProductWrapper> = [];
-  countries = new Set<string>();
-  types = new Set<string>();
-  filter: any = new Map();
-  filteredGoods: Array<ProductWrapper> = [];
+export class AppComponent implements OnInit{
 
-  constructor() {
-    GROCERY.forEach((val) => {
-      this.countries.add(val.country);
-      this.types.add(val.type);
-      this.goods.push(new ProductWrapper(val));
-    });
+  public goods!: any[];
+  public countries!: string[];
+  public types!: string[];
+  public bucketArray: Array<ProductWrapper> = [];
 
-    this.filteredGoods = this.goods;
+  constructor( public goodsService: GoodsService){}
+
+  ngOnInit(): void {
+    let obj = this.goodsService.getGoods();
+
+    this.goods = obj.goods;
+    this.countries = obj.countries;
+    this.types = obj.types;
   }
 
-  getArray(iterable: Iterable<any> | ArrayLike<any>): Array<any> {
-    return Array.from(iterable);
-  }
-
-  chosenElement(event: string, type: string) {
-    if (event === 'ALL') {
-      this.filter.delete(type);
-    } else {
-      this.filter.set(type, event);
-    }
-
-    this.goodsFilter();
-  }
-
-  goodsFilter() {
-    this.filteredGoods = this.goods;
-
-    if (this.filter.length !== 0) {
-      for (let item of this.filter) {
-        this.filteredGoods = this.filteredGoods.filter((val: any) =>
-          val[item[0].toLowerCase()].includes(item[1])
-        );
-      }
-    }
+  public addToBucket(value:ProductWrapper){
+      this.bucketArray.push(value);
   }
 }

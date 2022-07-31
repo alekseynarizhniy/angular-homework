@@ -1,0 +1,48 @@
+:host{
+  position: relative;
+  color: white;
+
+  table{
+
+    margin-bottom: 20px;
+
+    tr{
+
+      td{
+        min-height: 30px;
+        font-size: 18px;
+        padding: 5px 25px 5px 25px;
+
+        .dialog-image{
+          width: 20px;
+          height: 20px;
+        }
+
+      }
+    }
+  }
+
+  .full-price{
+    font-size: 24px;
+  }
+
+  .modal-close{
+    right: 10px;
+    position: absolute;
+    top: 10px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    img{
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(306deg) brightness(104%) contrast(101%);
+    }
+
+    &:hover img{
+      filter: invert(13%) sepia(38%) saturate(5993%) hue-rotate(320deg) brightness(120%) contrast(98%);
+    }
+
+  }
+
+
+}

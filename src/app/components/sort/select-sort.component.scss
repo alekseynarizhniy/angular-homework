@@ -6,7 +6,14 @@
   .select_menu {
     font-size: inherit;
     background-color: inherit;
-    border: 2px solid dimgray;
+    border: 2px solid #424242;
+    width: 250px;
+
+
+    &::selection {
+      color: #B41655;
+      background-color: inherit;
+    }
 
     :active {
       background-color: inherit;
@@ -15,6 +22,11 @@
     .select_item {
       font-size: inherit;
       background-color: inherit;
+
+      &:hover{
+        color: black;
+      }
     }
   }
+
 }

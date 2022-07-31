@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProductWrapper } from '../../classes/Product';
 
 @Component({
@@ -6,10 +6,12 @@ import { ProductWrapper } from '../../classes/Product';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() product!: ProductWrapper;
 
-  constructor() {}
+  @Output() addItemEvent = new EventEmitter<ProductWrapper>();
 
-  ngOnInit(): void {}
+  addProduct(event: any) {
+    this.addItemEvent.emit(this.product);
+  }
 }

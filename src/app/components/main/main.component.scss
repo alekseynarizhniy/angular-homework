@@ -1,0 +1,22 @@
+.main {
+  width: 100%;
+  display: flex;
+
+  .left-menu {
+    display: flex;
+    min-width: 20%;
+    background-color: rgb(236, 225, 211);
+    border: 2px solid #424242;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 2px solid #424242;
+    justify-content: end;
+  }
+}

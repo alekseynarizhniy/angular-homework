@@ -12,6 +12,6 @@ export interface Product {
   grownOn?: grownOn;
 }
 
-export interface ProductClass extends Product {
+export interface ProductAbstarct extends Product {
   getCost: (quntity: number) => number;
 }

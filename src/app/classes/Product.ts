@@ -1,6 +1,6 @@
-import { Product, ProductClass } from '../interfaces/product';
+import { Product, ProductAbstarct } from '../interfaces/product';
 
-export class ProductWrapper implements ProductClass {
+export class ProductWrapper implements ProductAbstarct {
   name: string;
   type: string;
   grownOn: any;
@@ -14,11 +14,7 @@ export class ProductWrapper implements ProductClass {
   constructor(obj: Product) {
     this.name = obj.name;
     this.type = obj.type;
-    if (obj.grownOn == undefined) {
-      this.grownOn = 'berry';
-    } else {
-      this.grownOn = obj.grownOn;
-    }
+    this.grownOn = obj.grownOn ? obj.grownOn : 'berry';
     this.quantity = obj.quantity;
     this.weight = obj.weight;
     this.price = obj.price;
