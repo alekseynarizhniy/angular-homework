@@ -1,4 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+
 import { ProductWrapper } from '../../classes/Product';
 
 @Component({
@@ -9,9 +11,9 @@ import { ProductWrapper } from '../../classes/Product';
 export class CardComponent {
   @Input() product!: ProductWrapper;
 
-  @Output() addItemEvent = new EventEmitter<ProductWrapper>();
+  constructor(public store: Store<any>) {}
 
-  addProduct(event: any) {
-    this.addItemEvent.emit(this.product);
+  addProduct() {
+    this.store.dispatch({ type: 'add', newvalue: this.product });
   }
 }

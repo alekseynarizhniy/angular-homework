@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { ProductWrapper } from '../../classes/Product';
 
@@ -21,7 +22,8 @@ export class MainComponent implements OnInit {
 
   @Input() goods!: Array<ProductWrapper>;
 
-  @Output() itemOutput = new EventEmitter<ProductWrapper>();
+  @ViewChild('paginator') paginator!: MatPaginator;
+
 
   ngOnInit(): void {
     this.filteredGoods = this.goods;
@@ -51,17 +53,14 @@ export class MainComponent implements OnInit {
     }
 
     this.showGoods = this.filteredGoods.slice(0, 5);
-  }
-
-  public sendItem(value: ProductWrapper) {
-    this.itemOutput.emit(value);
+    this.paginator.firstPage();
   }
 
   public changePage(event: any) {
     const startIndex = event.pageIndex * event.pageSize;
     let lastIndex = startIndex + event.pageSize;
 
-    if(lastIndex > this.goodsLength) lastIndex = this.goodsLength;
+    if (lastIndex > this.goodsLength) lastIndex = this.goodsLength;
 
     this.showGoods = this.filteredGoods.slice(startIndex, lastIndex);
   }

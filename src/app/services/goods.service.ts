@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { GROCERY } from '../goods';
 import { ProductWrapper } from '../classes/Product';
 
-
 @Injectable()
 export class GoodsService {
-
-  getGoods(){
+  getGoods() {
     let goods: Array<ProductWrapper> = [];
     let setCountries = new Set<string>();
     let setTypes = new Set<string>();
@@ -18,7 +16,11 @@ export class GoodsService {
       goods.push(new ProductWrapper(val));
     });
 
-    let obj = {countries: Array.from(setCountries), types: Array.from(setTypes),  goods: goods};
+    let obj = {
+      countries: Array.from(setCountries),
+      types: Array.from(setTypes),
+      goods: goods,
+    };
     return obj;
   }
 }

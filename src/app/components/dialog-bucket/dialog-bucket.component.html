@@ -1,7 +1,7 @@
 <table>
   <tr><td></td><td> name</td><td>price</td><td></td></tr>
   <tr *ngFor="let item of data; let i = index">
-    <td>{{ i }}</td><td>{{ item.name }}</td><td>{{ item.price | currency: "€" }}</td><td><img class="dialog-image" [src]="item.filename" alt="image"></td>
+    <td>{{ i + 1 }}</td><td>{{ item.name }}</td><td>{{ item.price | currency: "€" }}</td><td><img class="dialog-image" [src]="item.filename" alt="image"></td>
   </tr>
 </table>
 <p class="full-price">Full price {{ getFullPrice() | currency: "€" }}</p>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ProductWrapper } from './classes/Product';
 import { GoodsService } from './services/goods.service';
 
@@ -7,14 +8,12 @@ import { GoodsService } from './services/goods.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-
+export class AppComponent implements OnInit {
   public goods!: any[];
   public countries!: string[];
   public types!: string[];
-  public bucketArray: Array<ProductWrapper> = [];
 
-  constructor( public goodsService: GoodsService){}
+  constructor(public goodsService: GoodsService) {}
 
   ngOnInit(): void {
     let obj = this.goodsService.getGoods();
@@ -22,9 +21,5 @@ export class AppComponent implements OnInit{
     this.goods = obj.goods;
     this.countries = obj.countries;
     this.types = obj.types;
-  }
-
-  public addToBucket(value:ProductWrapper){
-      this.bucketArray.push(value);
   }
 }

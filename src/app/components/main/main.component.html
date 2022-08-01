@@ -4,26 +4,21 @@
     <app-sort
       [listMenu]="countries"
       [type]="country"
-      (newItemEvent)="chosenElement($event, country)"
-    ></app-sort>
+      (newItemEvent)="chosenElement($event, country)">
+    </app-sort>
     <app-sort
       [listMenu]="types"
       [type]="typeProduct"
-      (newItemEvent)="chosenElement($event, typeProduct)"
-    ></app-sort>
+      (newItemEvent)="chosenElement($event, typeProduct)">
+    </app-sort>
   </div>
   <div class="card-list">
-    <app-card
-      *ngFor="let item of showGoods"
-      [product]="item"
-      (addItemEvent)="sendItem($event)"
-    ></app-card>
-    <mat-paginator
+    <app-card *ngFor="let item of showGoods" [product]="item"></app-card>
+    <mat-paginator #paginator
       [length]="filteredGoods.length"
       [pageSize]="5"
       [pageSizeOptions]="[5, 10, 50, 100]"
-      (page)="changePage($event)"
-    >
+      (page)="changePage($event)">
     </mat-paginator>
   </div>
 </div>

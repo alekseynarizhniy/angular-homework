@@ -12,7 +12,7 @@ import { DialogBucketComponent } from '../dialog-bucket/dialog-bucket.component'
 export class BucketComponent {
   bucket: string = '../../../assets/images/bucket.png';
 
-  @Input() itemBucket!: Array<ProductWrapper>;
+  @Input() itemBucket: any = [];
 
   constructor(public dialog: MatDialog) {}
 
