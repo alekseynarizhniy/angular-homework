@@ -9,7 +9,7 @@ import { GoodsService } from './services/goods.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public goods: any[] = [];
+  public goods: ProductWrapper[] = [];
   public countries: string[] = [];
   public types: string[] = [];
 

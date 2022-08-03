@@ -13,14 +13,14 @@ export class MainComponent implements OnInit {
   public typeProduct = 'Type';
   public goodsLength: number = 0;
   private filter: any = new Map();
-  public filteredGoods: Array<ProductWrapper> = [];
-  public showGoods: Array<ProductWrapper> = [];
+  public filteredGoods: ProductWrapper[] = [];
+  public showGoods: ProductWrapper[] = [];
 
-  @Input() countries: any;
+  @Input() countries!: string[];
 
-  @Input() types: any;
+  @Input() types!: string[];
 
-  @Input() goods!: Array<ProductWrapper>;
+  @Input() goods!: ProductWrapper[];
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
