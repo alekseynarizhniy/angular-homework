@@ -1,16 +1,12 @@
-<img [src]="product.filename" [alt]="product.name" />
-<div class="card-body">
-  <h2 class="card-title">{{ product.name }}</h2>
-  <p class="card-text">{{ product.description }}</p>
-  <div class="card-info">
-    <h4 class="card-price">{{ product.price | currency: "€" }}</h4>
-    <input
-      type="text"
-      id="quantity"
-      name="quantity"
-      [placeholder]="product.quantity"
-      disabled
-    />
+<div class="card" [appDialog]="product">
+  <img [src]="product.filename" [alt]="product.name" />
+  <div class="card-body">
+    <h2 class="card-title">{{ product.name }}</h2>
+    <p class="card-text">{{ product.description }}</p>
+    <div class="card-info">
+      <h4 class="card-price">{{ product.price | currency: "€" }}</h4>
+      <input type="text" id="quantity" name="quantity" [placeholder]="product.quantity" disabled/>
+    </div>
+    <button class="btn-add" mat-raised-button (click)="addProduct($event)" appHightlightShadowDirective>Add</button>
   </div>
-  <button class="btn-add" mat-raised-button (click)="addProduct()">Add</button>
 </div>

@@ -13,7 +13,8 @@ export class CardComponent {
 
   constructor(public store: Store<any>) {}
 
-  addProduct() {
+  public addProduct(event: any) {
+    event.stopPropagation();
     this.store.dispatch({ type: 'add', newvalue: this.product });
   }
 }

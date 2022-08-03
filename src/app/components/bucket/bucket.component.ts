@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { ProductWrapper } from '../../classes/Product';
 import { DialogBucketComponent } from '../dialog-bucket/dialog-bucket.component';
 
 @Component({
@@ -10,13 +9,13 @@ import { DialogBucketComponent } from '../dialog-bucket/dialog-bucket.component'
   styleUrls: ['./bucket.component.scss'],
 })
 export class BucketComponent {
-  bucket: string = '../../../assets/images/bucket.png';
+  public bucket: string = '../../../assets/images/bucket.png';
 
   @Input() itemBucket: any = [];
 
   constructor(public dialog: MatDialog) {}
 
-  onClick() {
+  public onClick():void {
     const dialogRef = this.dialog.open(DialogBucketComponent, {
       width: '500px',
       data: this.itemBucket,

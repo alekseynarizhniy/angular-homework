@@ -10,12 +10,14 @@ import { ComponentModule } from './components/component.module';
 import { GoodsService } from './services/goods.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ComponentModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [GoodsService],
   bootstrap: [AppComponent],

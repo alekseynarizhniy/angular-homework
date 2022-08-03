@@ -1,0 +1,17 @@
+<table class="bucket-table">
+  <tr><td>Name: </td><td> {{ data.name}} </td></tr>
+  <tr><td>Type: </td><td> {{ data.type}} </td></tr>
+  <tr><td>Grown on: </td><td> {{ data.grownOn}} </td></tr>
+  <tr><td>Weight: </td><td> {{ data.weight}} </td></tr>
+  <tr><td>Exporter: </td><td> {{ data.country}} </td></tr>
+  <tr><td>Description: </td><td> {{ data.description}} </td></tr>
+  <tr></tr>
+  <tr><td>Price: </td><td> {{ data.price}} </td></tr>
+</table>
+<div type="button" class="dialog-close" (click)="onClose()">
+  <img [src]="closeIcon" alt="close-icon" />
+</div>
+<div class="btn-wrapper">
+  <button class="btn-add" mat-raised-button (click)="addProduct($event)" appHightlightShadowDirective>Add</button>
+</div>
+

@@ -1,4 +1,4 @@
-:host {
+.card{
   width: 100%;
   border-bottom: 2px solid #424242;
   display: flex;
@@ -37,10 +37,12 @@
       border-radius: 5px;
       background-color: #B41655;
       margin-bottom: 20px;
+      box-shadow: none;
 
       &:hover{
         color: black;
         background-color: bisque;
+        box-shadow: none;
       }
     }
   }

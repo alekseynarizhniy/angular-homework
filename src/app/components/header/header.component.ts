@@ -9,9 +9,9 @@ import { ProductWrapper } from '../../classes/Product';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  goodsArray!: ProductWrapper[];
+  public goodsArray!: ProductWrapper[];
 
   constructor(public store: Store<any>) {
-   (this.store.select('addGoods')).subscribe((val) => (this.goodsArray = val));
+   this.store.select('addGoods').subscribe((val) => (this.goodsArray = val));
   }
 }
