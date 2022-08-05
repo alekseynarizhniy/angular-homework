@@ -2,10 +2,10 @@
   position: relative;
   color: white;
 
-  table {
+  .dialog-table {
     margin-bottom: 30px;
 
-    td:first-child {
+    .table-item td:first-child {
       padding-right: 15px;
     }
   }

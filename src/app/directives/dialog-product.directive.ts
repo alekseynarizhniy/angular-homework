@@ -6,15 +6,15 @@ import { DialogProductComponent } from '../components/dialog-product/dialog-prod
 import { ProductWrapper } from '../classes/Product';
 
 @Directive({
-  selector: '[appDialog]',
+  selector: '[dialogProduct]',
 })
-export class DialogDirective {
-  @Input() appDialog!: ProductWrapper;
+export class DialogProductDirective {
+  @Input() dialogProduct!: ProductWrapper;
 
   @HostListener('click', ['$event']) onClick(event: any) {
     const dialogRef = this.dialog.open(DialogProductComponent, {
       width: '500px',
-      data: this.appDialog,
+      data: this.dialogProduct,
     });
 
     event.target.removeEventListener('click', this.onClick);

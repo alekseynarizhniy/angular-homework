@@ -17,12 +17,8 @@ import { FirstToUppercase } from '../pipes/firsttouppercase.pipe';
 
 import { reducer } from '../reducers/bucket.reducer';
 
-import { HightlightShadowDirective } from "../directives/hightlightshadow.directive";
-import { DialogDirective } from "../directives/dialog.directive";
-
-import { BucketAction } from "../interfaces/bucketAction";
-import { ProductWrapper } from "../classes/Product";
-
+import { HightlightShadowDirective } from '../directives/hightlightshadow.directive';
+import { DialogProductDirective } from '../directives/dialog-product.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +32,7 @@ import { ProductWrapper } from "../classes/Product";
     FirstToUppercase,
     HightlightShadowDirective,
     DialogProductComponent,
-    DialogDirective
+    DialogProductDirective
   ],
   imports: [
     CommonModule,

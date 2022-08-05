@@ -1,4 +1,4 @@
-<div class="card" [appDialog]="product">
+<div class="card" [dialogProduct]="product">
   <img [src]="product.filename" [alt]="product.name" />
   <div class="card-body">
     <h2 class="card-title">{{ product.name }}</h2>
@@ -7,6 +7,6 @@
       <h4 class="card-price">{{ product.price | currency: "€" }}</h4>
       <input type="text" id="quantity" name="quantity" [placeholder]="product.quantity" disabled/>
     </div>
-    <button class="btn-add" mat-raised-button (click)="addProduct($event)" appHightlightShadowDirective>Add</button>
+    <button class="btn-add" mat-raised-button (click)="addProduct($event)" hightlightShadowDirective>Add</button>
   </div>
 </div>

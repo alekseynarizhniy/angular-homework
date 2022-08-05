@@ -1,6 +1,6 @@
 <table class="bucket-table">
-  <tr><td></td><td> name </td><td> price </td><td></td></tr>
-  <tr *ngFor="let item of data; let i = index">
+  <tr class="table-header" ><td></td><td> name </td><td> price </td><td></td></tr>
+  <tr class="table-item" *ngFor="let item of data; let i = index">
     <td>{{ i + 1 }}</td><td>{{ item.name }}</td><td>{{ item.price | currency: "€" }}</td><td><img class="dialog-image" [src]="item.filename" alt="image"></td>
   </tr>
 </table>

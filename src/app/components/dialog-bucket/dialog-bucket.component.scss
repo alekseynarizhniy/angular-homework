@@ -2,11 +2,11 @@
   position: relative;
   color: white;
 
-  table{
+  .bucket-table{
 
     margin-bottom: 20px;
 
-    tr{
+    .table-header, .table-item{
 
       td{
         min-height: 30px;
