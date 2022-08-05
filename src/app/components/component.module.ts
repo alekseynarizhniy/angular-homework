@@ -5,16 +5,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoreModule } from '@ngrx/store';
 
 import { CardComponent } from './card/card.component';
-import { SelectSortComponent } from './sort/select-sort.component';
+import { SelectSortComponent } from './select-sort/select-sort.component';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { BucketComponent } from './bucket/bucket.component';
 import { DialogBucketComponent } from './dialog-bucket/dialog-bucket.component';
+import { DialogProductComponent } from './dialog-product/dialog-product.component';
 
-import { CurrencyPipe } from '../Pipes/currency.pipe';
-import { FirstToUppercase } from '../Pipes/firsttouppercase.pipe';
+import { CurrencyPipe } from '../pipes/currency.pipe';
+import { FirstToUppercase } from '../pipes/firsttouppercase.pipe';
 
 import { reducer } from '../reducers/bucket.reducer';
+
+import { HightlightShadowDirective } from '../directives/hightlightshadow.directive';
+import { DialogProductDirective } from '../directives/dialog-product.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,9 @@ import { reducer } from '../reducers/bucket.reducer';
     DialogBucketComponent,
     CurrencyPipe,
     FirstToUppercase,
+    HightlightShadowDirective,
+    DialogProductComponent,
+    DialogProductDirective
   ],
   imports: [
     CommonModule,

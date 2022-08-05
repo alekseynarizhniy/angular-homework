@@ -1,0 +1,47 @@
+:host {
+  position: relative;
+  color: white;
+
+  .dialog-table {
+    margin-bottom: 30px;
+
+    .table-item td:first-child {
+      padding-right: 15px;
+    }
+  }
+
+  .dialog-close {
+    right: 10px;
+    top: 10px;
+    position: absolute;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+
+    img {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(306deg)
+        brightness(104%) contrast(101%);
+    }
+
+    &:hover img {
+      filter: invert(13%) sepia(38%) saturate(5993%) hue-rotate(320deg)
+        brightness(120%) contrast(98%);
+    }
+  }
+
+  .btn-add {
+    width: 90px;
+    height: 30px;
+    color: white;
+    border-radius: 5px;
+    background-color: #b41655;
+    margin-bottom: 20px;
+    box-shadow: none;
+
+    &:hover {
+      color: black;
+      background-color: bisque;
+      box-shadow: none;
+    }
+  }
+}

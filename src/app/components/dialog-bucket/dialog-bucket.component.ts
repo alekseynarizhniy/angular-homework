@@ -9,14 +9,14 @@ import { ProductWrapper } from '../../classes/Product';
   styleUrls: ['./dialog-bucket.component.scss'],
 })
 export class DialogBucketComponent {
-  closeIcon: string = '../../../assets/images/cross-icon.svg';
+  public closeIcon: string = '../../../assets/images/cross-icon.svg';
 
   constructor(
     public dialogRef: MatDialogRef<DialogBucketComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductWrapper[]
   ) {}
 
-  getFullPrice() {
+  public getFullPrice() {
     let fullPrice = 0;
 
     this.data.forEach((item) => (fullPrice += item.price));
@@ -24,7 +24,7 @@ export class DialogBucketComponent {
     return Math.ceil(fullPrice);
   }
 
-  onClose() {
+  public onClose() {
     this.dialogRef.close();
   }
 }
