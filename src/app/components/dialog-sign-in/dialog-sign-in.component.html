@@ -1,0 +1,14 @@
+<div class="dialog-login">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <label for="login"> Login </label>
+    <input name="login" type="text" ngModel /><br />
+    <label for="password"> Password </label>
+    <input name="password" type="text" ngModel /><br />
+    <button>Login</button>
+  </form>
+  <div class="message"></div>
+  <div type="button" class="dialog-close" (click)="onClose()">
+    <img [src]="closeIcon" alt="close-icon" />
+  </div>
+  <span class="registration-link" (click)="onRegistrate()" hightlightShadowDirective>If you don't have account you can registrate!</span>
+</div>

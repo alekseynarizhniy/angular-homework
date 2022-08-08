@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { FilterProductService } from 'src/app/services/filter-product.service';
+import { SortProductService } from 'src/app/services/sort-product.service';
 
-import { ProductWrapper } from '../../classes/Product';
+import { ProductWrapper } from '../../classes/product';
 
 @Component({
   selector: 'app-main',
@@ -11,8 +13,10 @@ import { ProductWrapper } from '../../classes/Product';
 export class MainComponent implements OnInit {
   public country = 'Country';
   public typeProduct = 'Type';
+  public sort = 'Sort';
+  public sortProduct = ['Sort From A to Z', 'Sort From Z to A'];
   public goodsLength: number = 0;
-  private filter: any = new Map();
+  public pageSize:number = 5;
   public filteredGoods: ProductWrapper[] = [];
   public showGoods: ProductWrapper[] = [];
 
@@ -25,40 +29,37 @@ export class MainComponent implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
 
 
+  constructor(private fltr: FilterProductService, private srt: SortProductService){}
+
   ngOnInit(): void {
     this.filteredGoods = this.goods;
     this.goodsLength = this.filteredGoods.length;
-    this.showGoods = this.filteredGoods.slice(0, 5);
+    this.showGoods = this.filteredGoods.slice(0, this.pageSize);
+    this.fltr.addGoods(this.goods);
   }
 
-  public chosenElement(event: string, type: string) {
-    if (event === 'ALL') {
-      this.filter.delete(type);
-    } else {
-      this.filter.set(type, event);
-    }
-
-    this.goodsFilter();
+  public filterElement(event: string, type: string) {
+    this.filteredGoods = this.fltr.goodsFilter(type, event);
+    this.showGoods = this.filteredGoods.slice(0, this.pageSize);
+    this.paginator.firstPage();
   }
 
-  private goodsFilter() {
-    this.filteredGoods = this.goods;
-
-    if (this.filter.length !== 0) {
-      for (let item of this.filter) {
-        this.filteredGoods = this.filteredGoods.filter((val: any) =>
-          val[item[0].toLowerCase()].includes(item[1])
-        );
-      }
+  public sortElement(event: string){
+    if(event === this.sortProduct[0]){
+      this.filteredGoods = this.srt.sortNameAZ(this.filteredGoods);
+    }else if(event === this.sortProduct[1]){
+      this.filteredGoods = this.srt.sortNameZA(this.filteredGoods);
     }
 
-    this.showGoods = this.filteredGoods.slice(0, 5);
+    this.showGoods = this.filteredGoods.slice(0, this.pageSize);
     this.paginator.firstPage();
   }
 
   public changePage(event: any) {
     const startIndex = event.pageIndex * event.pageSize;
     let lastIndex = startIndex + event.pageSize;
+
+    this.pageSize = event.pageSize;
 
     if (lastIndex > this.goodsLength) lastIndex = this.goodsLength;
 

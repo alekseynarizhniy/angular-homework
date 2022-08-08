@@ -1,5 +1,5 @@
-import { ProductWrapper } from '../classes/Product';
-import { BucketAction } from '../interfaces/bucketAction';
+import { ProductWrapper } from '../classes/product';
+import { BucketAction } from '../interfaces/bucket-action';
 
 export function reducer(state: ProductWrapper[] = [], action: BucketAction) {
   let arr: ProductWrapper[] = [];

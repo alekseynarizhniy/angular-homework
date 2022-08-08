@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProductWrapper } from './classes/Product';
-import { GoodsService } from './services/goods.service';
+import { ProductWrapper } from './classes/product';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -9,17 +9,29 @@ import { GoodsService } from './services/goods.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public goods: ProductWrapper[] = [];
+  private url:string = 'goods';
+  public goods: Array<ProductWrapper> = [];
   public countries: string[] = [];
   public types: string[] = [];
 
-  constructor(public goodsService: GoodsService) {}
+  constructor(public goodsService: DataService) {}
 
-  ngOnInit(): void {
-    let obj = this.goodsService.getGoods();
+ ngOnInit(){
 
-    this.goods = obj.goods;
-    this.countries = obj.countries;
-    this.types = obj.types;
+    this.goodsService.getData(this.url).subscribe((val) => {
+      let setCountries = new Set<string>();
+      let setTypes = new Set<string>();
+
+      this.goods = val;
+      this.goods.forEach(val => {
+        setCountries.add(val.country);
+        setTypes.add(val.type);
+      });
+
+      this.countries = Array.from(setCountries);
+      this.types = Array.from(setTypes);
+    });
+
   }
+
 }

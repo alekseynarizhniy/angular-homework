@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { DialogProductComponent } from '../components/dialog-product/dialog-product.component';
 
-import { ProductWrapper } from '../classes/Product';
+import { ProductWrapper } from '../classes/product';
 
 @Directive({
   selector: '[dialogProduct]',

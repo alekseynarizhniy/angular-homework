@@ -1,6 +1,7 @@
-import { Product } from './interfaces/product';
+//import { Product } from '../interfaces/product';
 
-export const GROCERY: Array<Product> = [
+//export const GROCERY: Array<Product> = [
+export const GROCERY = [
   {
     name: 'Stawberry',
     type: 'fruit',

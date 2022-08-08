@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { ProductWrapper } from 'src/app/classes/Product';
+import { ProductWrapper } from 'src/app/classes/product';
 
 @Component({
   selector: 'app-dialog-product',

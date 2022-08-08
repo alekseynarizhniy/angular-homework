@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { ProductWrapper } from '../../classes/Product';
+import { ProductWrapper } from '../../classes/product';
 
 @Component({
   selector: 'app-card',
