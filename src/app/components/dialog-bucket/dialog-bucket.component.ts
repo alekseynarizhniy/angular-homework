@@ -1,7 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { ProductWrapper } from '../../classes/Product';
+import { ProductWrapper } from '../../classes/product';
+
+import { IMG_CLOSE } from '../../constants/links';
 
 @Component({
   selector: 'app-dialog-bucket',
@@ -9,10 +11,10 @@ import { ProductWrapper } from '../../classes/Product';
   styleUrls: ['./dialog-bucket.component.scss'],
 })
 export class DialogBucketComponent {
-  public closeIcon: string = '../../../assets/images/cross-icon.svg';
+  public closeIcon: string = IMG_CLOSE;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogBucketComponent>,
+    public dialogBucket: MatDialogRef<DialogBucketComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductWrapper[]
   ) {}
 
@@ -25,6 +27,6 @@ export class DialogBucketComponent {
   }
 
   public onClose() {
-    this.dialogRef.close();
+    this.dialogBucket.close();
   }
 }

@@ -1,4 +1,4 @@
-import { ProductWrapper } from '../classes/Product';
+import { ProductWrapper } from '../classes/product';
 
 export interface BucketAction {
   type: string;

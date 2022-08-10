@@ -6,9 +6,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./select-sort.component.scss'],
 })
 export class SelectSortComponent {
-  @Input() listMenu!: string[];
+  @Input() listMenu: string[] = [];
 
-  @Input() type: string | undefined;
+  @Input() type: string = '';
 
   @Output() newItemEvent = new EventEmitter<string>();
 

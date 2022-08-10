@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { ProductWrapper } from '../../classes/Product';
+import { ProductWrapper } from '../../classes/product';
 
 @Component({
   selector: 'app-card',
@@ -16,5 +16,7 @@ export class CardComponent {
   public addProduct(event: any) {
     event.stopPropagation();
     this.store.dispatch({ type: 'add', newvalue: this.product });
+
+    event.target.removeEventListener('click', this.addProduct, true);
   }
 }

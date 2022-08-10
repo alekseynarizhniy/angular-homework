@@ -4,19 +4,26 @@
     <app-sort
       [listMenu]="countries"
       [type]="country"
-      (newItemEvent)="chosenElement($event, country)">
+      (newItemEvent)="filterElement($event, country)">
+      <option class="select_item" value="ALL">ALL</option>
     </app-sort>
     <app-sort
       [listMenu]="types"
       [type]="typeProduct"
-      (newItemEvent)="chosenElement($event, typeProduct)">
+      (newItemEvent)="filterElement($event, typeProduct)">
+      <option class="select_item" value="ALL">ALL</option>
     </app-sort>
+    <app-sort
+    [listMenu]="sortProduct"
+    [type]="sort"
+    (newItemEvent)="sortElement($event)">
+  </app-sort>
   </div>
-  <div class="card-list">
+  <div class="card-list" *ngIf="goods.length">
     <app-card *ngFor="let item of showGoods" [product]="item"></app-card>
     <mat-paginator #paginator
       [length]="filteredGoods.length"
-      [pageSize]="5"
+      [pageSize]="pageSize"
       [pageSizeOptions]="[5, 10, 50, 100]"
       (page)="changePage($event)">
     </mat-paginator>

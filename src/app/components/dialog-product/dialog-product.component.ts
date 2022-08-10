@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { ProductWrapper } from 'src/app/classes/Product';
+import { ProductWrapper } from 'src/app/classes/product';
+
+import { IMG_CLOSE } from "../../constants/links";
 
 @Component({
   selector: 'app-dialog-product',
@@ -10,10 +12,10 @@ import { ProductWrapper } from 'src/app/classes/Product';
 })
 export class DialogProductComponent{
 
-  public closeIcon: string = '../../../assets/images/cross-icon.svg';
+  public closeIcon: string = IMG_CLOSE;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogProductComponent>,
+    public dialogProduct: MatDialogRef<DialogProductComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductWrapper,
     public store: Store<any>
   ) {}
@@ -24,6 +26,6 @@ export class DialogProductComponent{
   }
 
   public onClose() {
-    this.dialogRef.close();
+    this.dialogProduct.close();
   }
 }

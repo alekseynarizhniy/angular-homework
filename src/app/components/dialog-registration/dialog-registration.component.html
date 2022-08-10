@@ -1,0 +1,29 @@
+<div class="dialog-registration">
+  <form #form="ngForm" ngClass="form-registration" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="from-name">
+      <label for="name"> Name </label>
+      <input name="name" type="text" ngModel />
+    </div>
+    <div class="form-login">
+      <label for="login"> Login </label>
+      <input name="login" type="text" ngModel />
+    </div>
+    <div class="form-password">
+      <label for="password"> Password </label>
+      <input name="password" type="text" ngModel />
+    </div>
+    <div class="form-email">
+      <label for="email"> Email </label>
+      <input name="email" type="text" ngModel />
+    </div>
+    <div class="form-address">
+      <label for="address"> Address </label>
+      <input name="address" type="text" ngModel />
+    </div>
+    <button class="form-btn" >Registrate</button>
+  </form>
+  <div class="message"></div>
+  <div type="button" class="dialog-close" (click)="onClose()">
+    <img [src]="closeIcon" alt="close-icon" />
+  </div>
+</div>

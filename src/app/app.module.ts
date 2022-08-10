@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentModule } from './components/component.module';
 
-import { GoodsService } from './services/goods.service';
+import { DataService } from './services/data.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { GoodsService } from './services/goods.service';
     ComponentModule,
     BrowserAnimationsModule
   ],
-  providers: [GoodsService],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
