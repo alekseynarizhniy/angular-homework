@@ -5,27 +5,39 @@ import { UserService } from 'src/app/services/user.service';
 import { DialogBucketComponent } from '../dialog-bucket/dialog-bucket.component';
 import { DialogSignInComponent } from '../dialog-sign-in/dialog-sign-in.component';
 
+import { IMG_BUCKET } from '../../constants/links';
+import { DIALOG_WIDTH } from '../../constants/values';
+import { ProductWrapper } from 'src/app/classes/product';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-bucket',
   templateUrl: './bucket.component.html',
   styleUrls: ['./bucket.component.scss'],
 })
 export class BucketComponent {
-  public bucket: string = '../../../assets/images/bucket.png';
+  public bucket = IMG_BUCKET;
+  autorization: Boolean = false;
 
-  @Input() itemBucket: any = [];
+  @Input() itemBucket: ProductWrapper[] = [];
 
-  constructor(public dialog: MatDialog, private userStatus: UserService) {}
+  constructor(public dialog: MatDialog, public useAuthorization: UserService) {}
+
+  ngOnInit(): void {
+    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
+            this.autorization = val;
+        });
+  }
 
   public onClick(): void {
-    if (this.userStatus.getStatus()) {
-      const dialogRef = this.dialog.open(DialogBucketComponent, {
-        width: '500px',
+    if (this.autorization) {
+      this.dialog.open(DialogBucketComponent, {
+        width: DIALOG_WIDTH,
         data: this.itemBucket,
       });
     } else {
-      const dialogRef = this.dialog.open(DialogSignInComponent, {
-        width: '500px',
+      this.dialog.open(DialogSignInComponent, {
+        width: DIALOG_WIDTH,
       });
     }
   }

@@ -19,7 +19,7 @@
     (newItemEvent)="sortElement($event)">
   </app-sort>
   </div>
-  <div class="card-list">
+  <div class="card-list" *ngIf="goods.length">
     <app-card *ngFor="let item of showGoods" [product]="item"></app-card>
     <mat-paginator #paginator
       [length]="filteredGoods.length"

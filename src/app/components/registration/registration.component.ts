@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
 import { UserService } from 'src/app/services/user.service';
+
 import { DialogRegistrationComponent } from '../dialog-registration/dialog-registration.component';
+
+import { DIALOG_WIDTH } from '../../constants/values';
 
 @Component({
   selector: 'app-registration',
@@ -9,11 +13,19 @@ import { DialogRegistrationComponent } from '../dialog-registration/dialog-regis
   styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent {
-  constructor(public dialog: MatDialog, public userStatus: UserService) {}
+  autorization: Boolean = false;
+
+  constructor(public dialog: MatDialog, public useAuthorization: UserService) {}
+
+  ngOnInit(): void {
+    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
+            this.autorization = val;
+        });
+  }
 
   public onClick(): void {
-    const dialogRef = this.dialog.open(DialogRegistrationComponent, {
-      width: '500px',
+    this.dialog.open(DialogRegistrationComponent, {
+      width: DIALOG_WIDTH,
     });
   }
 }

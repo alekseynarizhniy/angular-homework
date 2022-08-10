@@ -16,5 +16,7 @@ export class CardComponent {
   public addProduct(event: any) {
     event.stopPropagation();
     this.store.dispatch({ type: 'add', newvalue: this.product });
+
+    event.target.removeEventListener('click', this.addProduct, true);
   }
 }

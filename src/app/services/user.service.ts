@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
-import { User } from "../interfaces/users";
+import { User } from '../interfaces/users';
 
 @Injectable()
 export class UserService {
-  private user: User = {
-    name: '',
-    login: '',
-    password: '',
-    email: '',
-    address: ''
-  };
+  private user!: User;
 
-  private status:Boolean = false;
+  public isAutorized: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
-  addUser(user:User){
+  addUser(user: User) {
     this.user = user;
-    this.status = true;
+    this.isAutorized.next(true);
   }
 
-  getStatus(){
-    return this.status;
+  getAutorizationStatus(): Observable<boolean> {
+    return this.isAutorized.asObservable();
   }
-
 }

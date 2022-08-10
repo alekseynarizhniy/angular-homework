@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const URL: string = 'http://localhost:3000/';
+import { URL } from '../constants/links';
 
 @Injectable()
 export class DataService {
   constructor(private http: HttpClient) {}
 
   getData(partUrl: string): Observable<any> {
-
     return this.http.get(URL + partUrl);
   }
 

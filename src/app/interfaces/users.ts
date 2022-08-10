@@ -5,8 +5,3 @@ export interface User{
   email:string;
   address:string;
 }
-
-export interface Users {
-  [key: string]: User
-}
-

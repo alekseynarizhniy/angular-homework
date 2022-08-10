@@ -3,6 +3,7 @@ import { ProductWrapper } from '../classes/product';
 
 @Injectable()
 export class FilterProductService {
+  private ALL_VALUE:string = 'ALL';
   private goods: ProductWrapper[] = [];
   private filter: any = new Map();
 
@@ -12,7 +13,7 @@ export class FilterProductService {
 
   goodsFilter(type: string, value: string ): ProductWrapper[] {
 
-    if (value === 'ALL') {
+    if (value === this.ALL_VALUE) {
       this.filter.delete(type);
     } else {
       this.filter.set(type, value);

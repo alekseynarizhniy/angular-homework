@@ -1,12 +1,12 @@
 {
   "goods": [
     {
-      "name": "Stawberry",
+      "name": "Strawberry",
       "type": "fruit",
       "quantity": 12,
       "weight": 1,
       "price": 29.45,
-      "description": "Sweet fresh stawberry on the wooden table",
+      "description": "Sweet fresh strawberry on the wooden table",
       "filename": "https://s30386.pcdn.co/wp-content/uploads/2019/08/Strawberries_HNL1306_ts104880701.jpg.webp",
       "country": "Norway"
     },
@@ -143,20 +143,20 @@
   ],
   "users": [
     {
-      "id": 1,
       "name": "vasia",
       "login": "brbr",
       "password": "brbr",
       "email": "brbr@i.ua",
-      "address": "str. brbr, 45"
+      "address": "str. brbr, 45",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "dasia",
       "login": "obrobr",
       "password": "obrobr",
       "email": "obrobr@i.ua",
-      "address": "str. obrobr, 75"
+      "address": "str. obrobr, 75",
+      "id": 2
     },
     {
       "name": "ff",
@@ -165,6 +165,22 @@
       "email": "ff",
       "address": "ff",
       "id": 3
+    },
+    {
+      "name": "zz",
+      "login": "zz",
+      "password": "zz",
+      "email": "zz",
+      "address": "zz",
+      "id": 4
+    },
+    {
+      "name": "fr",
+      "login": "fr",
+      "password": "fr",
+      "email": "fr",
+      "address": "fr",
+      "id": 5
     }
   ]
 }

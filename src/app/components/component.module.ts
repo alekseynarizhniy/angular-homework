@@ -17,7 +17,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { DialogSignInComponent } from './dialog-sign-in/dialog-sign-in.component';
 
 import { CurrencyPipe } from '../pipes/currency.pipe';
-import { FirstToUppercase } from '../pipes/firsttouppercase.pipe';
+import { FirstToUppercase } from '../pipes/first-to-uppercase.pipe';
 
 import { reducer } from '../reducers/bucket.reducer';
 

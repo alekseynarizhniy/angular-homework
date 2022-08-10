@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/interfaces/users';
+import { SubscriptionLike } from 'rxjs';
+
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
+
 import { DialogRegistrationComponent } from '../dialog-registration/dialog-registration.component';
+
+import { User } from 'src/app/interfaces/users';
+
+import { IMG_CLOSE, EXTRA_URL_USERS } from '../../constants/links';
+import { DIALOG_WIDTH } from '../../constants/values';
+
 
 @Component({
   selector: 'app-dialog-sign-in',
@@ -12,9 +20,10 @@ import { DialogRegistrationComponent } from '../dialog-registration/dialog-regis
   styleUrls: ['./dialog-sign-in.component.scss'],
 })
 export class DialogSignInComponent {
-  public closeIcon: string = '../../../assets/images/cross-icon.svg';
-  private url: string = 'users';
+  public closeIcon: string = IMG_CLOSE;
   private users: User[] = [];
+  public errorMessage: string = '';
+  private subscription!: SubscriptionLike;
 
   constructor(
     public dialogRef: MatDialogRef<DialogSignInComponent>,
@@ -24,36 +33,29 @@ export class DialogSignInComponent {
   ) {}
 
   ngOnInit() {
-    this.userService.getData(this.url).subscribe((val) => {
+    this.subscription = this.userService.getData(EXTRA_URL_USERS).subscribe((val) => {
       this.users = val;
+      this.subscription.unsubscribe();
     });
   }
 
-  onSubmit(f: NgForm): Boolean {
-    const value = f.value;
+  onSubmit(form: NgForm): Boolean {
+    const value = form.value;
 
-    if (value.login.length) {
-      if (value.password.length) {
-        let swither = false;
-        this.users.forEach((element) => {
-          if (
-            element.login === value.login &&
-            element.password === value.password
-          )
-            swither = true;
-        });
+    if (value.login.length && value.password.length) {
+      let user = this.users.find(
+        (element) =>
+          element.login === value.login && element.password === value.password
+      );
 
-        if (swither) {
-          this.userStatus.addUser(this.users[value.login]);
-          this.onClose();
-          return true;
-        }
+      if (user) {
+        this.userStatus.addUser(user);
+        this.onClose();
+        return true;
       }
     }
 
-    let dialog = document.body.querySelector('.dialog-login .message')!;
-
-    dialog.innerHTML = 'wrong login or password';
+    this.errorMessage = 'wrong login or password';
 
     return false;
   }
@@ -62,11 +64,11 @@ export class DialogSignInComponent {
     this.dialogRef.close();
   }
 
-  public onRegistrate(){
+  public onRegistrate() {
     this.dialogRef.close();
 
-    const dialogRef = this.dialog.open(DialogRegistrationComponent, {
-      width: '500px',
+    this.dialog.open(DialogRegistrationComponent, {
+      width: DIALOG_WIDTH,
     });
   }
 }

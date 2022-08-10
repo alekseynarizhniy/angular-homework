@@ -1,12 +1,15 @@
 <div class="dialog-login">
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
-    <label for="login"> Login </label>
-    <input name="login" type="text" ngModel /><br />
+  <form #form="ngForm" ngClass="form-login" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="form-login">
+      <label for="login"> Login </label>
+      <input name="login" type="text" ngModel /><br />
+    </div>
+    <div class="form-password"></div>
     <label for="password"> Password </label>
     <input name="password" type="text" ngModel /><br />
-    <button>Login</button>
+    <button class="form-btn">Login</button>
   </form>
-  <div class="message"></div>
+  <div class="message">{{ errorMessage }}</div>
   <div type="button" class="dialog-close" (click)="onClose()">
     <img [src]="closeIcon" alt="close-icon" />
   </div>
