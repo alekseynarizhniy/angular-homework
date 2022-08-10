@@ -1,5 +1,20 @@
-<div class="item" hightlightShadowDirective><app-registration></app-registration></div>
-<div class="item" hightlightShadowDirective><app-sign-in></app-sign-in></div>
-<div class="item" hightlightShadowDirective><app-bucket [itemBucket]="goodsArray"></app-bucket></div>
-
-
+<div class="left-part">
+  <div class="item left-item" hightlightShadowDirective>
+    <a routerLink="/main" routerLinkActive="active">Main</a>
+  </div>
+  <div class="item left-item" hightlightShadowDirective>
+    <a routerLink="/about" routerLinkActive="active">About</a>
+  </div>
+  <div class="item left-item" hightlightShadowDirective>
+    <a routerLink="/bucket" routerLinkActive="active">Bucket</a>
+  </div>
+</div>
+<div class="right-part">
+  <div class="item" hightlightShadowDirective>
+    <app-registration></app-registration>
+  </div>
+  <div class="item" hightlightShadowDirective><app-sign-in></app-sign-in></div>
+  <div class="item" hightlightShadowDirective>
+    <app-bucket [itemBucket]="goodsArray"></app-bucket>
+  </div>
+</div>
