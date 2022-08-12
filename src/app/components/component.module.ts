@@ -19,7 +19,6 @@ import { DialogBucketComponent } from './dialog-bucket/dialog-bucket.component';
 import { DialogProductComponent } from './dialog-product/dialog-product.component';
 import { DialogRegistrationComponent } from './dialog-registration/dialog-registration.component';
 import { AboutComponent } from './about/about.component';
-import { CopyBucketComponent } from "./copy-bucket/copy-bucket.component";
 
 import { CurrencyPipe } from '../pipes/currency.pipe';
 import { FirstToUppercase } from '../pipes/first-to-uppercase.pipe';
@@ -33,12 +32,9 @@ import { FilterProductService } from '../services/filter-product.service';
 import { SortProductService } from '../services/sort-product.service';
 import { UserService } from '../services/user.service';
 
-import { CopyBucketGuardGuard } from "../gurds/copy-bucket-guard.guard";
-
 const routes: Routes = [
 { path: 'main', component: MainComponent },
 { path: 'about', component: AboutComponent },
-{ path: 'bucket', component: CopyBucketComponent, canActivate: [CopyBucketGuardGuard] },
 { path: '**', component: MainComponent}
 ];
 
@@ -59,8 +55,7 @@ const routes: Routes = [
     DialogSignInComponent,
     RegistrationComponent,
     DialogRegistrationComponent,
-    AboutComponent,
-    CopyBucketComponent
+    AboutComponent
   ],
   imports: [
     CommonModule,

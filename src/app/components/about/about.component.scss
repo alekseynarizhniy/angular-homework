@@ -2,14 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 60px;
 
   .about-inner{
     width: 70%;
     text-align: justify;
 
-    h1{
+    .about-tittle{
       text-align: center;
+    }
+
+    .about-paragraph{
+
+      span{
+        margin-left: 15px;
+      }
     }
   }
 }
