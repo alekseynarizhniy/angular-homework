@@ -8,7 +8,6 @@ import { DialogSignInComponent } from '../dialog-sign-in/dialog-sign-in.componen
 import { IMG_BUCKET } from '../../constants/links';
 import { DIALOG_WIDTH } from '../../constants/values';
 import { ProductWrapper } from 'src/app/classes/product';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bucket',
