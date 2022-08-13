@@ -23,8 +23,8 @@ export class BucketComponent {
   constructor(public dialog: MatDialog, public useAuthorization: UserService) {}
 
   ngOnInit(): void {
-    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
-            this.autorization = val;
+    this.useAuthorization.getAutorizationStatus().subscribe((autorizationStaus: Boolean) => {
+            this.autorization = autorizationStaus;
         });
   }
 

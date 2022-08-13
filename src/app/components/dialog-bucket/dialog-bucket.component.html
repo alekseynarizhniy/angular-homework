@@ -1,3 +1,4 @@
+<div class="bucket">
 <table class="bucket-table">
   <tr class="table-header" ><td></td><td> name </td><td> price </td><td></td></tr>
   <tr class="table-item" *ngFor="let item of data; let i = index">
@@ -5,6 +6,8 @@
   </tr>
 </table>
 <p class="full-price">Full price {{ getFullPrice() | currency: "€" }}</p>
+<button class="accept-order" (click)="onClose()">Accept order</button>
+</div>
 <div type="button" class="dialog-close" (click)="onClose()">
   <img [src]="closeIcon" alt="close-icon" />
 </div>

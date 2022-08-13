@@ -159,28 +159,12 @@
       "id": 2
     },
     {
-      "name": "ff",
-      "login": "ff",
-      "password": "ff",
-      "email": "ff",
-      "address": "ff",
+      "name": "ffff",
+      "login": "fffff",
+      "password": "some123",
+      "email": "some@fff.ff",
+      "address": "Litva, Vilnius, str. Old 2",
       "id": 3
-    },
-    {
-      "name": "zz",
-      "login": "zz",
-      "password": "zz",
-      "email": "zz",
-      "address": "zz",
-      "id": 4
-    },
-    {
-      "name": "fr",
-      "login": "fr",
-      "password": "fr",
-      "email": "fr",
-      "address": "fr",
-      "id": 5
     }
   ]
 }

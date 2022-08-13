@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { SubscriptionLike } from 'rxjs';
 import { EXTRA_URL_GOODS } from 'src/app/constants/links';
 import { DataService } from 'src/app/services/data.service';
 
@@ -27,6 +28,7 @@ export class MainComponent implements OnInit {
   public types: string[] = [];
   public filteredGoods: ProductWrapper[] = [];
   public showGoods: ProductWrapper[] = [];
+  private subscription!: SubscriptionLike;
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
@@ -37,24 +39,27 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.goodsService.getData(EXTRA_URL_GOODS).subscribe((val) => {
-      let setCountries = new Set<string>();
-      let setTypes = new Set<string>();
+    this.subscription = this.goodsService
+      .getData(EXTRA_URL_GOODS)
+      .subscribe((goods: ProductWrapper[]) => {
+        let setCountries = new Set<string>();
+        let setTypes = new Set<string>();
 
-      this.goods = val;
-      this.goods.forEach((val) => {
-        setCountries.add(val.country);
-        setTypes.add(val.type);
+        this.goods = goods;
+        this.goods.forEach((goods) => {
+          setCountries.add(goods.country);
+          setTypes.add(goods.type);
+        });
+
+        this.countries = Array.from(setCountries);
+        this.types = Array.from(setTypes);
+
+        this.filteredGoods = this.goods;
+        this.goodsLength = this.filteredGoods.length;
+        this.showGoods = this.filteredGoods.slice(0, this.pageSize);
+        this.productFilter.addGoods(this.goods);
+        this.subscription.unsubscribe();
       });
-
-      this.countries = Array.from(setCountries);
-      this.types = Array.from(setTypes);
-
-      this.filteredGoods = this.goods;
-      this.goodsLength = this.filteredGoods.length;
-      this.showGoods = this.filteredGoods.slice(0, this.pageSize);
-      this.productFilter.addGoods(this.goods);
-    });
   }
 
   public filterElement(event: string, type: string) {

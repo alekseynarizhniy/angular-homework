@@ -12,6 +12,8 @@ export class HeaderComponent {
   public goodsArray: ProductWrapper[] = [];
 
   constructor(public store: Store<any>) {
-    this.store.select('addGoods').subscribe((val) => (this.goodsArray = val));
+    this.store
+      .select('addGoods')
+      .subscribe((goods: ProductWrapper[]) => (this.goodsArray = goods));
   }
 }

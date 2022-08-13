@@ -18,8 +18,8 @@ export class SignInComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
-            this.autorization = val;
+    this.useAuthorization.getAutorizationStatus().subscribe((autorizationStatus: Boolean) => {
+            this.autorization = autorizationStatus;
         });
   }
 

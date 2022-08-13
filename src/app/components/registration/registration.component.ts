@@ -18,8 +18,8 @@ export class RegistrationComponent {
   constructor(public dialog: MatDialog, public useAuthorization: UserService) {}
 
   ngOnInit(): void {
-    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
-            this.autorization = val;
+    this.useAuthorization.getAutorizationStatus().subscribe((autorizationStatus: Boolean) => {
+            this.autorization = autorizationStatus;
         });
   }
 
