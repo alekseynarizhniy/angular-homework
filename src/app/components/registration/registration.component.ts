@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SubscriptionLike } from 'rxjs';
 
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,20 +13,27 @@ import { DIALOG_WIDTH } from '../../constants/values';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent {
-  autorization: Boolean = false;
+export class RegistrationComponent implements OnInit, OnDestroy{
+  public autorization: Boolean = false;
+  private subcription!: SubscriptionLike;
 
-  constructor(public dialog: MatDialog, public useAuthorization: UserService) {}
+  constructor(private dialog: MatDialog, private useAuthorization: UserService) {}
 
   ngOnInit(): void {
-    this.useAuthorization.getAutorizationStatus().subscribe((val: any) => {
-            this.autorization = val;
+    this.subcription = this.useAuthorization.getAutorizationStatus().subscribe((autorizationStatus: Boolean) => {
+            this.autorization = autorizationStatus;
         });
   }
 
-  public onClick(): void {
+  ngOnDestroy(): void {
+    this.subcription.unsubscribe();
+  }
+
+  public onClick(event: any): void {
     this.dialog.open(DialogRegistrationComponent, {
       width: DIALOG_WIDTH,
     });
+
+    event.target.removeEventListener('click', this.onClick, true);
   }
 }

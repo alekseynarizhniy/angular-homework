@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
+
 import { ProductWrapper } from '../classes/product';
 
 @Injectable()
 export class FilterProductService {
-  private ALL_VALUE:string = 'ALL';
+  private ALL_VALUE: string = 'ALL';
   private goods: ProductWrapper[] = [];
   private filter: any = new Map();
 
-  addGoods(productArr:ProductWrapper[]){
+  public addGoods(productArr: ProductWrapper[]): void {
     this.goods = productArr;
   }
 
-  goodsFilter(type: string, value: string ): ProductWrapper[] {
-
+  public goodsFilter(type: string, value: string): ProductWrapper[] {
     if (value === this.ALL_VALUE) {
       this.filter.delete(type);
     } else {
@@ -29,7 +29,6 @@ export class FilterProductService {
       }
     }
 
-   return filteredGoods;
+    return filteredGoods;
   }
-
 }

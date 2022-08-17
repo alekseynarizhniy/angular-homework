@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -31,6 +35,9 @@ import { DialogProductDirective } from '../directives/dialog-product.directive';
 import { FilterProductService } from '../services/filter-product.service';
 import { SortProductService } from '../services/sort-product.service';
 import { UserService } from '../services/user.service';
+import { ProfileComponent } from './profile/profile.component';
+import { DialogProfileComponent } from './dialog-profile/dialog-profile.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
 
 const routes: Routes = [
 { path: 'main', component: MainComponent },
@@ -55,16 +62,24 @@ const routes: Routes = [
     DialogSignInComponent,
     RegistrationComponent,
     DialogRegistrationComponent,
-    AboutComponent
+    AboutComponent,
+    ProfileComponent,
+    DialogProfileComponent,
+    SignOutComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     MatDialogModule,
     HttpClientModule,
-    StoreModule.forRoot<any, any>({ addGoods: reducer }),
-    RouterModule.forRoot(routes),
     MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot<any, any>({ addGoods: reducer }),
+    RouterModule.forRoot(routes)
   ],
   exports: [RouterModule, HeaderComponent],
   providers: [FilterProductService, SortProductService, UserService],

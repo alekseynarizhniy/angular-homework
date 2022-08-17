@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { SubscriptionLike } from 'rxjs';
 
 import { ProductWrapper } from '../../classes/product';
 
@@ -8,10 +9,20 @@ import { ProductWrapper } from '../../classes/product';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy{
+  private subscription!: SubscriptionLike;
   public goodsArray: ProductWrapper[] = [];
 
-  constructor(public store: Store<any>) {
-    this.store.select('addGoods').subscribe((val) => (this.goodsArray = val));
+
+  constructor(private store: Store<any>) {
+    this.subscription = this.store
+      .select('addGoods')
+      .subscribe((goods: ProductWrapper[]) => {
+        this.goodsArray = goods;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { EXTRA_URL_GOODS } from 'src/app/constants/links';
-import { DataService } from 'src/app/services/data.service';
+import { SubscriptionLike } from 'rxjs';
 
 import { FilterProductService } from 'src/app/services/filter-product.service';
+import { GoodsService } from 'src/app/services/goods.service';
 import { SortProductService } from 'src/app/services/sort-product.service';
 
 import { ProductWrapper } from '../../classes/product';
@@ -13,7 +13,7 @@ import { ProductWrapper } from '../../classes/product';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnDestroy {
   public country = 'Country';
   public typeProduct = 'Type';
   public sort = 'Sort';
@@ -22,6 +22,7 @@ export class MainComponent implements OnInit {
   public sortProduct = [this.sortAZ, this.sortZA];
   public goodsLength: number = 0;
   public pageSize: number = 5;
+  private subscription!: SubscriptionLike;
   public goods: ProductWrapper[] = [];
   public countries: string[] = [];
   public types: string[] = [];
@@ -30,21 +31,23 @@ export class MainComponent implements OnInit {
 
   @ViewChild('paginator') paginator!: MatPaginator;
 
+
   constructor(
     private productFilter: FilterProductService,
     private productSort: SortProductService,
-    private goodsService: DataService
+    private goodsService: GoodsService
   ) {}
 
   ngOnInit(): void {
-    this.goodsService.getData(EXTRA_URL_GOODS).subscribe((val) => {
+   this.subscription = this.goodsService.getGoods().subscribe((goods: ProductWrapper[]) => {
       let setCountries = new Set<string>();
       let setTypes = new Set<string>();
+      this.goods = [];
 
-      this.goods = val;
-      this.goods.forEach((val) => {
-        setCountries.add(val.country);
-        setTypes.add(val.type);
+      goods.forEach((product) => {
+        setCountries.add(product.country);
+        setTypes.add(product.type);
+        this.goods.push(new ProductWrapper(product));
       });
 
       this.countries = Array.from(setCountries);
@@ -57,13 +60,18 @@ export class MainComponent implements OnInit {
     });
   }
 
-  public filterElement(event: string, type: string) {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+
+  public filterElement(event: string, type: string): void  {
     this.filteredGoods = this.productFilter.goodsFilter(type, event);
     this.showGoods = this.filteredGoods.slice(0, this.pageSize);
     this.paginator.firstPage();
   }
 
-  public sortElement(event: string) {
+  public sortElement(event: string): void  {
     if (event === this.sortAZ) {
       this.filteredGoods = this.productSort.sortNameAZ(this.filteredGoods);
     } else if (event === this.sortZA) {

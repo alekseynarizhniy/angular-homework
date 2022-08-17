@@ -4,6 +4,11 @@
     [formGroup]="registrationGroup"
     (ngSubmit)="onSubmit()"
   >
+    <div class="form-item form-login">
+      <label for="login"> Login </label>
+      <input name="login" type="text" formControlName="login" />
+      <div class="alert alert-danger"></div>
+    </div>
     <div class="form-item from-name">
       <label for="name"> Name </label>
       <input name="name" type="text" formControlName="name" required />
@@ -17,25 +22,15 @@
         </div>
       </div>
     </div>
-    <div class="form-item form-login">
-      <label for="login"> Login </label>
-      <input name="login" type="text" formControlName="login" required />
-      <div class="alert alert-danger">
-        <span class="error-message login-message">{{ loginMessage }}</span>
-        <div *ngIf="login!.invalid && (login!.dirty || login!.touched)">
-          <div *ngIf="login!.errors?.['required']">Login is required.</div>
-          <div *ngIf="login!.errors?.['minlength']">
-            Login must be at least 4 characters long.
-          </div>
-          <div *ngIf="login!.errors?.['pattern']">
-            Only alphabetsallowed and numbers.
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="form-item form-password">
       <label for="password"> Password </label>
-      <input name="password" type="text" formControlName="password" />
+      <input
+        name="password"
+        type="text"
+        formControlName="password"
+        value="{{ this.data.password }}"
+        required
+      />
       <div class="alert alert-danger">
         <div
           *ngIf="password!.invalid && (password!.dirty || password!.touched)"
@@ -47,32 +42,44 @@
             Password must be at least 4 characters long.
           </div>
           <div *ngIf="password!.errors?.['pattern']">
-            Only alphabetsallowed and numbers.
+            Only alphabetsallowed and numbers
           </div>
         </div>
       </div>
     </div>
     <div class="form-item form-email">
       <label for="email"> Email </label>
-      <input name="email" type="text" formControlName="email" />
+      <input
+        name="email"
+        type="text"
+        formControlName="email"
+        value="{{ this.data.email }}"
+        required
+      />
       <div class="alert alert-danger">
         <div *ngIf="email!.invalid && (email!.dirty || email!.touched)">
           <div *ngIf="email!.errors?.['required']">Email is required.</div>
-          <div *ngIf="email!.errors?.['pattern']">Incorrect email.</div>
+          <div *ngIf="email!.errors?.['pattern']">Incorrect email</div>
         </div>
       </div>
     </div>
     <div class="form-item form-address">
       <label for="address"> Address </label>
-      <input name="address" type="text" formControlName="address" />
+      <input
+        name="address"
+        type="text"
+        formControlName="address"
+        value="{{ this.data.address }}"
+        required
+      />
       <div class="alert alert-danger">
         <div *ngIf="address!.invalid && (address!.dirty || address!.touched)">
           <div *ngIf="address!.errors?.['required']">Address is required.</div>
-          <div *ngIf="address!.errors?.['minlength']">Address to short.</div>
+          <div *ngIf="address!.errors?.['minlength']">Address to short</div>
         </div>
       </div>
     </div>
-    <button class="form-btn" mat-button class="accept-order" color="primary">Registrate</button>
+    <button class="form-btn" mat-button class="accept-order" color="primary">Update data profile</button>
   </form>
   <div type="button" class="dialog-close" (click)="onClose()">
     <img [src]="closeIcon" alt="close-icon" />

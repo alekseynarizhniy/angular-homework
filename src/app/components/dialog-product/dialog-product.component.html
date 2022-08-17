@@ -1,16 +1,18 @@
-<table class="dialog-table">
-  <tr class="table-item"><td>Name: </td><td> {{ data.name}} </td></tr>
-  <tr class="table-item"><td>Type: </td><td> {{ data.type}} </td></tr>
-  <tr class="table-item"><td>Grown on: </td><td> {{ data.grownOn}} </td></tr>
-  <tr class="table-item"><td>Weight: </td><td> {{ data.weight}} </td></tr>
-  <tr class="table-item"><td>Exporter: </td><td> {{ data.country}} </td></tr>
-  <tr class="table-item"><td>Description: </td><td> {{ data.description}} </td></tr>
-  <tr class="table-item"></tr>
-  <tr class="table-item"><td>Price: </td><td> {{ data.price}} </td></tr>
-</table>
-<div type="button" class="dialog-close" (click)="onClose()">
-  <img [src]="closeIcon" alt="close-icon" />
-</div>
-<div class="btn-wrapper">
-  <button class="btn-add" mat-raised-button (click)="addProduct($event)" appHightlightShadowDirective>Add</button>
+<div class="dialog-product">
+  <table class="dialog-table">
+    <tr class="table-item"><td>Name: </td><td> {{ data.name}} </td></tr>
+    <tr class="table-item"><td>Type: </td><td> {{ data.type}} </td></tr>
+    <tr class="table-item"><td>Grown on: </td><td> {{ data.grownOn}} </td></tr>
+    <tr class="table-item"><td>Weight: </td><td> {{ data.weight}} </td></tr>
+    <tr class="table-item"><td>Exporter: </td><td> {{ data.country}} </td></tr>
+    <tr class="table-item"><td>Description: </td><td> {{ data.description}} </td></tr>
+    <tr class="table-item"></tr>
+    <tr class="table-item"><td>Price: </td><td> {{ data.price}} </td></tr>
+  </table>
+  <div type="button" class="dialog-close" (click)="onClose()">
+    <img [src]="closeIcon" alt="close-icon" />
+  </div>
+  <div class="btn-wrapper">
+    <button class="btn-add" mat-button class="accept-order" color="primary"  (click)="addProduct($event)" appHightlightShadowDirective>Add</button>
+  </div>
 </div>

@@ -1,9 +1,11 @@
 import { Directive, HostListener, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { ProductWrapper } from '../classes/product';
+
 import { DialogProductComponent } from '../components/dialog-product/dialog-product.component';
 
-import { ProductWrapper } from '../classes/product';
+import { DIALOG_WIDTH } from '../constants/values';
 
 @Directive({
   selector: '[dialogProduct]',
@@ -11,14 +13,14 @@ import { ProductWrapper } from '../classes/product';
 export class DialogProductDirective {
   @Input() dialogProduct!: ProductWrapper;
 
-  @HostListener('click', ['$event']) onClick(event: any) {
-    const dialogRef = this.dialog.open(DialogProductComponent, {
-      width: '500px',
+  @HostListener('click', ['$event']) onClick(event: any): void {
+    this.dialog.open(DialogProductComponent, {
+      width: DIALOG_WIDTH,
       data: this.dialogProduct,
     });
 
     event.target.removeEventListener('click', this.onClick);
   }
 
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) {}
 }
