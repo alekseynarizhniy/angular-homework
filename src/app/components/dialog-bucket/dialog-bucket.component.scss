@@ -19,6 +19,12 @@
       text-align: center;
     }
 
+    .mat-column-remove {
+      button{
+        margin: 3px 0 3px 0;
+      }
+    }
+
     .dialog-image{
                width: 20px;
               height: 20px;
@@ -27,6 +33,7 @@
 
   .full-price{
     font-size: 20px;
+    text-shadow: 0 0 1em black, 0 0 0.2em black;
   }
 
   .dialog-close{

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,6 +11,12 @@ import { ComponentModule } from './components/component.module';
 import { DataService } from './services/data.service';
 import { GoodsService } from "./services/goods.service";
 
+import { RequestsLogInterceptor } from "./interceptors/requests-log.interceptor";
+
+export const httpInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: RequestsLogInterceptor, multi: true },
+  ];
+
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +27,7 @@ import { GoodsService } from "./services/goods.service";
     ComponentModule,
     BrowserAnimationsModule
   ],
-  providers: [DataService, GoodsService],
+  providers: [httpInterceptorProviders, DataService, GoodsService, ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
