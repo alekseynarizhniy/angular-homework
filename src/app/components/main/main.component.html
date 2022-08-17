@@ -4,18 +4,19 @@
     <app-sort
       [listMenu]="countries"
       [type]="country"
+      [allValue] = "true"
       (newItemEvent)="filterElement($event, country)">
-      <option class="select_item" value="ALL">ALL</option>
     </app-sort>
     <app-sort
       [listMenu]="types"
       [type]="typeProduct"
+      [allValue] = "true"
       (newItemEvent)="filterElement($event, typeProduct)">
-      <option class="select_item" value="ALL">ALL</option>
     </app-sort>
     <app-sort
     [listMenu]="sortProduct"
     [type]="sort"
+    [allValue] = "false"
     (newItemEvent)="sortElement($event)">
   </app-sort>
   </div>

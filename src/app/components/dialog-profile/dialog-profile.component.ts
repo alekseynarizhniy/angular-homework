@@ -1,9 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SubscriptionLike } from 'rxjs';
 
-import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 
 import { User } from 'src/app/interfaces/users';
@@ -21,7 +19,7 @@ import {
   templateUrl: './dialog-profile.component.html',
   styleUrls: ['./dialog-profile.component.scss'],
 })
-export class DialogProfileComponent implements OnInit {
+export class DialogProfileComponent {
   public closeIcon: string = IMG_CLOSE;
   private minSize: number = 4;
   private userNameControl = new FormControl(this.data.name, [
@@ -56,14 +54,10 @@ export class DialogProfileComponent implements OnInit {
   loginMessage: string = '';
 
   constructor(
-    public dialogRegistration: MatDialogRef<DialogProfileComponent>,
-    public userService: UserService,
-    public dataService: DataService,
-
+    private dialogRegistration: MatDialogRef<DialogProfileComponent>,
+    private userService: UserService,
     @Inject(MAT_DIALOG_DATA) public data: User
-  ) {console.log(this.data)}
-
-  ngOnInit(): void {}
+  ) {}
 
   get name() {
     return this.registrationGroup.get('name');
@@ -81,10 +75,9 @@ export class DialogProfileComponent implements OnInit {
     return this.registrationGroup.get('address');
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     if (this.registrationGroup.valid) {
       const user: User = this.registrationGroup.value as User;
-      const userLogin: string = user['login']!;
 
       this.userService.updateUser({ ...this.data, ...user });
       this.onClose();
@@ -93,7 +86,7 @@ export class DialogProfileComponent implements OnInit {
     }
   }
 
-  public onClose() {
+  public onClose(): void {
     this.dialogRegistration.close();
   }
 }

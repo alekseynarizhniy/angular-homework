@@ -1,12 +1,14 @@
-<div class="card" [dialogProduct]="product">
-  <img [src]="product.filename" [alt]="product.name" />
-  <div class="card-body">
-    <h2 class="card-title">{{ product.name }}</h2>
-    <p class="card-text">{{ product.description }}</p>
-    <div class="card-info">
-      <h4 class="card-price">{{ product.price | currency: "€" }}</h4>
-      <input type="text" id="quantity" name="quantity" [placeholder]="product.quantity" disabled/>
+<mat-card [dialogProduct]="product">
+  <mat-card-subtitle>
+    <img [src]="product.filename" [alt]="product.name" />
+    <div class="card-body">
+      <h2 class="card-title">{{ product.name }}</h2>
+      <p class="card-text">{{ product.description }}</p>
+      <div class="card-info">
+        <h4 class="card-price">{{ product.price | currency: "€" }}</h4>
+        <input type="text" id="quantity" name="quantity" [placeholder]="product.quantity" disabled/>
+      </div>
+      <button mat-button color="primary" (click)="addProduct($event)" [disabled]="!product.quantity" hightlightShadowDirective>Add</button>
     </div>
-    <button class="btn-add" mat-raised-button (click)="addProduct($event)" hightlightShadowDirective>Add</button>
-  </div>
-</div>
+  </mat-card-subtitle>
+</mat-card>

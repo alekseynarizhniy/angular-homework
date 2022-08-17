@@ -8,17 +8,16 @@ import { URL, HTTP_OPTINDS } from '../constants/links';
 export class DataService {
   constructor(private http: HttpClient) {}
 
-  getData(partUrl: string): Observable<any> {
+  public getData(partUrl: string): Observable<any> {
     return this.http.get(URL + partUrl);
   }
 
-  addData(insideUrl: string, obj: any): Observable<any> {
+  public addData(insideUrl: string, obj: any): Observable<any> {
     return this.http.post(URL + insideUrl, obj, HTTP_OPTINDS);
   }
 
-  updateData(insideUrl: string, obj: any): Observable<any> {
+  public updateData(insideUrl: string, obj: any): Observable<any> {
     return this.http.put(URL + insideUrl, obj, HTTP_OPTINDS);
   }
-
 
 }

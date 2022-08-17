@@ -1,45 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SubscriptionLike } from 'rxjs';
 
-import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 
 import { DialogRegistrationComponent } from '../dialog-registration/dialog-registration.component';
 
 import { User } from 'src/app/interfaces/users';
 
-import { IMG_CLOSE, EXTRA_URL_USERS } from '../../constants/links';
+import { IMG_CLOSE } from '../../constants/links';
 import { DIALOG_WIDTH } from '../../constants/values';
-
 
 @Component({
   selector: 'app-dialog-sign-in',
   templateUrl: './dialog-sign-in.component.html',
   styleUrls: ['./dialog-sign-in.component.scss'],
 })
-export class DialogSignInComponent {
+export class DialogSignInComponent implements OnInit, OnDestroy {
   public closeIcon: string = IMG_CLOSE;
   private users: User[] = [];
-  public errorMessage: string = '';
   private subscription!: SubscriptionLike;
+  public errorMessage: string = '';
 
   constructor(
-    public dialogRef: MatDialogRef<DialogSignInComponent>,
-    public userService: DataService,
-    public dialog: MatDialog,
-    private userStatus: UserService
+    private dialogRef: MatDialogRef<DialogSignInComponent>,
+    private userService: UserService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    this.subscription = this.userService.getData(EXTRA_URL_USERS).subscribe((val) => {
-      this.users = val;
-      this.subscription.unsubscribe();
-    });
+    this.subscription = this.userService
+      .getUsersFromServer()
+      .subscribe((val: User[]) => {
+        this.users = val;
+      });
   }
 
-  onSubmit(form: NgForm): Boolean {
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  onSubmit(form: NgForm): void {
     const value = form.value;
 
     if (value.login.length && value.password.length) {
@@ -49,22 +51,19 @@ export class DialogSignInComponent {
       );
 
       if (user) {
-        this.userStatus.addUser(user);
+        this.userService.addUser(user);
         this.onClose();
-        return true;
       }
     }
 
     this.errorMessage = 'wrong login or password';
-
-    return false;
   }
 
-  public onClose() {
+  public onClose(): void {
     this.dialogRef.close();
   }
 
-  public onRegistrate() {
+  public onRegistrate(): void {
     this.dialogRef.close();
 
     this.dialog.open(DialogRegistrationComponent, {

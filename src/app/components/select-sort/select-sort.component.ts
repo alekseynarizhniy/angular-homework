@@ -10,9 +10,12 @@ export class SelectSortComponent {
 
   @Input() type: string = '';
 
+  @Input() allValue:Boolean = false;
+
   @Output() newItemEvent = new EventEmitter<string>();
 
-  onChange(value: string) {
-    this.newItemEvent.emit(value);
+  onChange(element: any): void {
+    console.log(element.value)
+    this.newItemEvent.emit(element.value);
   }
 }

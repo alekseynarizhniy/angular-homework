@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SubscriptionLike } from 'rxjs';
 
-import { DataService } from 'src/app/services/data.service';
+import { UserService } from 'src/app/services/user.service';
+
 import { DialogSignInComponent } from '../dialog-sign-in/dialog-sign-in.component';
 
 import { User } from '../../interfaces/users';
 
-import { IMG_CLOSE, EXTRA_URL_USERS } from '../../constants/links';
+import { IMG_CLOSE } from '../../constants/links';
 import {
   REGEX_ADDRESS,
   REGEX_EMAIL,
@@ -22,7 +23,7 @@ import {
   templateUrl: './dialog-registration.component.html',
   styleUrls: ['./dialog-registration.component.scss'],
 })
-export class DialogRegistrationComponent implements OnInit {
+export class DialogRegistrationComponent implements OnInit, OnDestroy {
   public closeIcon: string = IMG_CLOSE;
   private minSize: number = 4;
   private userNameControl = new FormControl('', [
@@ -60,17 +61,20 @@ export class DialogRegistrationComponent implements OnInit {
   public loginMessage: string = '';
 
   constructor(
-    public dialogRegistration: MatDialogRef<DialogSignInComponent>,
-    public users: DataService
+    private dialogRegistration: MatDialogRef<DialogSignInComponent>,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.users
-      .getData(EXTRA_URL_USERS)
-      .subscribe((users) => {
+    this.subscription = this.userService
+      .getUsersFromServer()
+      .subscribe((users: User[]) => {
         users.forEach((user: User) => this.logins.push(user.login));
-        this.subscription.unsubscribe();
       });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   get name() {
@@ -93,16 +97,13 @@ export class DialogRegistrationComponent implements OnInit {
     return this.registrationGroup.get('address');
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     if (this.registrationGroup.valid) {
       const user: User = this.registrationGroup.value as User;
-      const userLogin: string = user['login']!;
+      const userLogin: string = user.login;
 
       if (!this.logins.includes(userLogin)) {
-        this.subscription = this.users
-          .addData(EXTRA_URL_USERS, user)
-          .subscribe((res) => this.subscription.unsubscribe());
-
+        this.userService.addNewUser(user);
         this.onClose();
       } else {
         this.loginMessage = 'Login exist, try another';
@@ -110,7 +111,7 @@ export class DialogRegistrationComponent implements OnInit {
     }
   }
 
-  public onClose() {
+  public onClose(): void {
     this.dialogRegistration.close();
   }
 }

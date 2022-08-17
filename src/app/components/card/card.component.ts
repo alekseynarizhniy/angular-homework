@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { ProductWrapper } from '../../classes/product';
@@ -8,14 +8,32 @@ import { ProductWrapper } from '../../classes/product';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
+  private goodsFromStore: number = 0;
+
   @Input() product!: ProductWrapper;
 
-  constructor(public store: Store<any>) {}
+  constructor(private store: Store<any>) {}
+
+  ngOnInit(): void {
+    this.store.select('addGoods').subscribe((goods: ProductWrapper[]) => {
+      const product = goods.find(
+        (product: ProductWrapper) => product.name === this.product.name
+      );
+
+      if (product) this.goodsFromStore = product.quantity;
+    });
+  }
 
   public addProduct(event: any) {
     event.stopPropagation();
-    this.store.dispatch({ type: 'add', newvalue: this.product });
+
+    if(this.goodsFromStore < this.product.quantity){
+      let currentPruduct: ProductWrapper = Object.assign({}, this.product);
+      currentPruduct.quantity = 1;
+
+      this.store.dispatch({ type: 'add', newvalue: currentPruduct });
+    }
 
     event.target.removeEventListener('click', this.addProduct, true);
   }

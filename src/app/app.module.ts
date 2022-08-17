@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ComponentModule } from './components/component.module';
 
 import { DataService } from './services/data.service';
+import { GoodsService } from "./services/goods.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { DataService } from './services/data.service';
     ComponentModule,
     BrowserAnimationsModule
   ],
-  providers: [DataService],
+  providers: [DataService, GoodsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

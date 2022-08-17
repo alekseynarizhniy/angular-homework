@@ -10,6 +10,7 @@ export class ProductWrapper implements ProductAbstarct {
   description: string;
   country: string;
   filename: string;
+  id: number;
 
   constructor(obj: Product) {
     this.name = obj.name;
@@ -21,6 +22,7 @@ export class ProductWrapper implements ProductAbstarct {
     this.description = obj.description;
     this.country = obj.country;
     this.filename = obj.filename;
+    this.id = obj.id;
   }
 
   getCost(quntityBuy: number): number {

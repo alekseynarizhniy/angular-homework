@@ -1,9 +1,10 @@
 {
   "goods": [
     {
+      "id": 1,
       "name": "Strawberry",
       "type": "fruit",
-      "quantity": 12,
+      "quantity": 0,
       "weight": 1,
       "price": 29.45,
       "description": "Sweet fresh strawberry on the wooden table",
@@ -11,9 +12,10 @@
       "country": "Norway"
     },
     {
+      "id": 2,
       "name": "Asparagus",
       "type": "vegetable",
-      "quantity": 12,
+      "quantity": 1,
       "weight": 1,
       "price": 18.95,
       "description": "Asparagus with ham on the wooden table",
@@ -21,9 +23,10 @@
       "country": "Poland"
     },
     {
+      "id": 3,
       "name": "Legums",
       "type": "vegetable",
-      "quantity": 12,
+      "quantity": 6,
       "weight": 1,
       "price": 17.11,
       "description": "Raw legums on the wooden table",
@@ -31,9 +34,10 @@
       "country": "Poland"
     },
     {
+      "id": 4,
       "name": "Hazelnut",
       "type": "vegetable",
-      "quantity": 12,
+      "quantity": 10,
       "weight": 1,
       "price": 27.35,
       "description": "Hazelnut in black ceramic bowl on old wooden background. forest wealth. rustic style. selective focus",
@@ -41,9 +45,10 @@
       "country": "Germany"
     },
     {
+      "id": 5,
       "name": "Lemon",
       "type": "fruit",
-      "quantity": 12,
+      "quantity": 6,
       "weight": 1,
       "price": 15.79,
       "description": "Rosemary, lemon and salt on the table",
@@ -51,9 +56,10 @@
       "country": "Norway"
     },
     {
+      "id": 6,
       "name": "Tomato",
       "type": "vegetable",
-      "quantity": 12,
+      "quantity": 11,
       "weight": 1,
       "price": 16.3,
       "description": "Fresh tomato juice with basil",
@@ -61,9 +67,10 @@
       "country": "Poland"
     },
     {
+      "id": 7,
       "name": "Green beans",
       "type": "vegetable",
-      "quantity": 12,
+      "quantity": 8,
       "weight": 1,
       "price": 28.79,
       "description": "Raw organic green beans ready to eat",
@@ -71,6 +78,7 @@
       "country": "Poland"
     },
     {
+      "id": 8,
       "name": "Pears",
       "type": "fruit",
       "quantity": 12,
@@ -81,6 +89,7 @@
       "country": "Norway"
     },
     {
+      "id": 9,
       "name": "Oranges",
       "type": "fruit",
       "quantity": 12,
@@ -91,6 +100,7 @@
       "country": "Brazil"
     },
     {
+      "id": 10,
       "name": "Cherry",
       "type": "fruit",
       "quantity": 12,
@@ -101,6 +111,7 @@
       "country": "Litva"
     },
     {
+      "id": 11,
       "name": "Corn",
       "type": "vegetable",
       "quantity": 12,
@@ -111,6 +122,7 @@
       "country": "USA"
     },
     {
+      "id": 12,
       "name": "Blueberries",
       "type": "fruit",
       "quantity": 12,
@@ -121,6 +133,7 @@
       "country": "Norway"
     },
     {
+      "id": 13,
       "name": "Plums",
       "type": "fruit",
       "quantity": 12,
@@ -131,6 +144,7 @@
       "country": "Norway"
     },
     {
+      "id": 14,
       "name": "Basil",
       "type": "vegetable",
       "quantity": 12,
@@ -159,12 +173,20 @@
       "id": 2
     },
     {
-      "name": "ffff",
-      "login": "fffff",
-      "password": "some123",
-      "email": "some@fff.ff",
-      "address": "Litva, Vilnius, str. Old 2",
+      "name": "JohN",
+      "login": "newone",
+      "password": "newone",
+      "email": "newone@i.ua",
+      "address": "newone",
       "id": 3
+    },
+    {
+      "name": "SPecial",
+      "login": "second",
+      "password": "second",
+      "email": "second@i.ua",
+      "address": "second",
+      "id": 4
     }
   ]
 }

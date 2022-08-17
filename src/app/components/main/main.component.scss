@@ -5,7 +5,7 @@
   .left-menu {
     display: flex;
     min-width: 20%;
-    background-color: rgb(236, 225, 211);
+    background-color: bisque;
     border: 2px solid #424242;
     flex-direction: column;
     padding: 20px;
@@ -17,6 +17,6 @@
     flex-direction: column;
     width: 100%;
     border: 2px solid #424242;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 }

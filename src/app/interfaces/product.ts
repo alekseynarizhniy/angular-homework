@@ -9,6 +9,7 @@ export interface Product {
   description: string;
   country: string;
   filename: string;
+  id:number;
   grownOn?: grownOn;
 }
 

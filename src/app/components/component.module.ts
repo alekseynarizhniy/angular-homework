@@ -3,6 +3,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -69,6 +73,10 @@ const routes: Routes = [
     MatDialogModule,
     HttpClientModule,
     MatPaginatorModule,
+    MatTableModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule,
     ReactiveFormsModule,
     StoreModule.forRoot<any, any>({ addGoods: reducer }),
     RouterModule.forRoot(routes)

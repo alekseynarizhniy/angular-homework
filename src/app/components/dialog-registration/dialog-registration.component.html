@@ -28,7 +28,7 @@
             Login must be at least 4 characters long.
           </div>
           <div *ngIf="login!.errors?.['pattern']">
-            Only alphabetsallowed and numbers
+            Only alphabetsallowed and numbers.
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
             Password must be at least 4 characters long.
           </div>
           <div *ngIf="password!.errors?.['pattern']">
-            Only alphabetsallowed and numbers
+            Only alphabetsallowed and numbers.
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
       <div class="alert alert-danger">
         <div *ngIf="email!.invalid && (email!.dirty || email!.touched)">
           <div *ngIf="email!.errors?.['required']">Email is required.</div>
-          <div *ngIf="email!.errors?.['pattern']">Incorrect email</div>
+          <div *ngIf="email!.errors?.['pattern']">Incorrect email.</div>
         </div>
       </div>
     </div>
@@ -68,11 +68,11 @@
       <div class="alert alert-danger">
         <div *ngIf="address!.invalid && (address!.dirty || address!.touched)">
           <div *ngIf="address!.errors?.['required']">Address is required.</div>
-          <div *ngIf="address!.errors?.['minlength']">Address to short</div>
+          <div *ngIf="address!.errors?.['minlength']">Address to short.</div>
         </div>
       </div>
     </div>
-    <button class="form-btn">Registrate</button>
+    <button class="form-btn" mat-button class="accept-order" color="primary">Registrate</button>
   </form>
   <div type="button" class="dialog-close" (click)="onClose()">
     <img [src]="closeIcon" alt="close-icon" />
