@@ -173,20 +173,12 @@
       "id": 2
     },
     {
-      "name": "JohN",
+      "name": "John Smith",
       "login": "newone",
       "password": "newone",
       "email": "newone@i.ua",
       "address": "newone",
       "id": 3
-    },
-    {
-      "name": "SPecial",
-      "login": "second",
-      "password": "second",
-      "email": "second@i.ua",
-      "address": "second",
-      "id": 4
     }
   ]
 }
