@@ -1,1 +1,1 @@
-Homework from Angular lessons
+Homework from Angular lessons and Module project
