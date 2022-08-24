@@ -1,13 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { DIALOG_WIDTH } from 'src/app/constants/values';
 
 import { GoodsService } from 'src/app/services/goods.service';
 
 import { ProductWrapper } from '../../classes/product';
 
-import { IMG_CLOSE } from '../../constants/links';
+import { SuccessOrderComponent } from '../success-order/success-order.component';
 
 @Component({
   selector: 'app-dialog-bucket',
@@ -15,7 +16,6 @@ import { IMG_CLOSE } from '../../constants/links';
   styleUrls: ['./dialog-bucket.component.scss'],
 })
 export class DialogBucketComponent implements OnInit, OnDestroy {
-  public closeIcon: string = IMG_CLOSE;
   public displayedColumns: string[] = [
     'position',
     'name',
@@ -31,6 +31,7 @@ export class DialogBucketComponent implements OnInit, OnDestroy {
   constructor(
     private dialogBucket: MatDialogRef<DialogBucketComponent>,
     private goodsService: GoodsService,
+    private dialog: MatDialog,
     private store: Store<any>
   ) {}
 
@@ -65,16 +66,24 @@ export class DialogBucketComponent implements OnInit, OnDestroy {
   }
 
   public acceptOrder(): void {
-    this.bucketGoods.forEach((product: ProductWrapper) => {
-      let currentProduct = this.goods[product.id - 1];
 
-      currentProduct.quantity -= product.quantity;
+    if(this.bucketGoods.length){
+      this.bucketGoods.forEach((product: ProductWrapper) => {
+        let currentProduct = this.goods[product.id - 1];
 
-      this.goodsService.updateProduct(currentProduct);
-    });
+        currentProduct.quantity -= product.quantity;
 
-    this.clearBucker();
-    this.dialogBucket.close();
+        this.goodsService.updateProduct(currentProduct);
+      });
+
+      this.clearBucker();
+
+      this.dialog.open(SuccessOrderComponent, {
+        width: DIALOG_WIDTH,
+      });
+    }
+
+    this.onClose();
   }
 
   public removeProduct(product: ProductWrapper): void {

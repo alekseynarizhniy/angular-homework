@@ -8,7 +8,7 @@ import { GoodsService } from './services/goods.service';
 })
 export class AppComponent{
 
-  constructor(public data: GoodsService){
+  constructor(private data: GoodsService){
     this.data.getGoodsServer();
   }
 }

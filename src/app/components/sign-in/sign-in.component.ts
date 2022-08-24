@@ -13,23 +13,9 @@ import { DIALOG_WIDTH } from '../../constants/values';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit, OnDestroy {
-  public autorization: Boolean = false;
-  private subcription!: SubscriptionLike;
+export class SignInComponent {
 
-  constructor(private dialog: MatDialog, private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.subcription = this.userService
-      .getAutorizationStatus()
-      .subscribe((autorizationStatus: Boolean) => {
-        this.autorization = autorizationStatus;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.subcription.unsubscribe();
-  }
+  constructor(private dialog: MatDialog) {}
 
   public onClick(event: any): void {
     this.dialog.open(DialogSignInComponent, {

@@ -1,6 +1,6 @@
-import { Resolvs } from '../interfaces/resolve-status';
+import { ResolveStatus } from '../interfaces/resolve-status';
 
-export const RESOLVE_STATUS: Resolvs = {
+export const RESOLVE_STATUS: ResolveStatus = {
   100: 'Continue',
   200: 'OK',
   201: 'Created',

@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: mypecialFont;
+  src: url(https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap);
+}
+
 html,
 body {
   height: 100%;
@@ -14,113 +19,26 @@ body {
   overflow-y: scroll;
 }
 
-.mat-dialog-container {
-  color: black;
-  background-color: rgb(236, 225, 211);
-}
 
-.mat-card {
-  width: 100%;
-  border-bottom: 2px solid #424242;
-  display: flex;
-  padding: 0 !important;
-  align-items: center;
-  background: white;
-  color: black;
 
-  .mat-card-subtitle {
-    color: black;
-    display: flex;
-
-    img {
-      max-width: 150px;
-      max-height: 150px;
-      margin: 15px;
-    }
-    .card-body {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: -20px;
-      margin: 0 20px;
-
-      .card-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        input {
-          max-height: 35px;
-          max-width: 35px;
-          font-size: 15px;
-        }
-      }
-
-      .btn-add {
-        width: 90px;
-        height: 30px;
-        color: white;
-        border-radius: 5px;
-        background-color: #b41655;
-        margin-bottom: 20px;
-        box-shadow: none;
-
-        &:hover {
-          color: black;
-          background-color: bisque;
-          box-shadow: none;
-        }
-
-        &:disabled {
-          background-color: grey;
-
-          &:hover {
-            color: white;
-          }
-        }
-      }
-    }
-  }
-}
-
-.mat-button,
 .mat-button.mat-primary {
-  max-width: 190px;
-  color: #b41655;
-  border-radius: 5px;
-  background-color: bisque;
-  margin-bottom: 20px;
-  box-shadow: none;
-  border: #b41655 2px solid;
+  border: solid 2px #673ab7 !important;
 
   &:hover {
-    color: bisque;
-    background-color: #b41655;
-    border: bisque 2px solid;
-    box-shadow: none;
-  }
-
-  &:disabled {
-    color: bisque;
-    background-color: rgb(221, 212, 212);
-    border: none;
-    &:hover {
-      color: bisque;
-      background-color: rgb(221, 212, 212);
-      border: none;
-    }
+    color: white;
+    background-color: #673ab7;
+    border: solid 2px white;
   }
 }
 
-.mat-form-field.select-sort {
-  color: black;
-  background-color: #d3d1d180;
-  mat-label {
-    color: black;
-  }
+.mat-button.mat-primary:disabled {
+  border: solid 2px gainsboro !important;
+  background-color: transparent;
+  color: gainsboro;
 
-  .mat-select-arrow {
-    border-top: 5px black solid;
+  &:hover {
+    color: gainsboro;
+    background-color: transparent;
+    border: solid 2px gainsboro;
   }
 }
-

@@ -1,3 +1,3 @@
-export interface Resolvs{
+export interface ResolveStatus{
   [key:number]:string;
 }

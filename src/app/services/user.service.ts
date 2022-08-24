@@ -26,6 +26,44 @@ export class UserService {
     return this.data.getData(EXTRA_URL_USERS);
   }
 
+  public checkUser(login: string, password: string): Observable<boolean> {
+    return new Observable((subscriber) => {
+      this.getUsersFromServer().subscribe((users) => {
+        if (login.length && password.length) {
+          let user = users.find(
+            (element) =>
+              element.login === login && element.password === password
+          );
+
+          if (user) {
+            subscriber.next(true);
+            this.addUser(user);
+          } else {
+            subscriber.next(false);
+          }
+        } else {
+          subscriber.next(false);
+        }
+      });
+    });
+  }
+
+  public checkLogin(login: string): Observable<boolean> {
+    return new Observable((subscriber) => {
+      this.getUsersFromServer().subscribe((users) => {
+      const logins: string[] = [];
+      users.forEach((user: User) => logins.push(user.login));
+
+      if (!logins.includes(login)) {
+        subscriber.next(true);
+      }else {
+        subscriber.next(false);
+      }
+
+      });
+    });
+  }
+
   public addUser(user: User): void {
     this.user.next(user);
     this.isAutorized.next(true);

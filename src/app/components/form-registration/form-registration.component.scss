@@ -1,0 +1,29 @@
+:host {
+  position: relative;
+
+  .form-registration {
+    display: flex;
+    flex-direction: column;
+
+    h3{
+      font-weight: bold;
+    }
+
+    .form-item {
+      input {
+        margin-right: 15px;
+      }
+    }
+
+    .alert {
+      color: red;
+      height: 35px;
+    }
+  }
+
+  .message {
+    color: red;
+    height: 20px;
+  }
+
+}

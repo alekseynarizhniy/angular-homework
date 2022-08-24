@@ -7,6 +7,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,12 +22,14 @@ import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { BucketComponent } from './bucket/bucket.component';
 import { SignInComponent } from './sign-in/sign-in.component';
-import { RegistrationComponent } from './registration/registration.component';
 import { DialogSignInComponent } from './dialog-sign-in/dialog-sign-in.component';
 import { DialogBucketComponent } from './dialog-bucket/dialog-bucket.component';
 import { DialogProductComponent } from './dialog-product/dialog-product.component';
-import { DialogRegistrationComponent } from './dialog-registration/dialog-registration.component';
+import { FormRegistrationComponent } from './form-registration/form-registration.component';
 import { AboutComponent } from './about/about.component';
+import { SignOutComponent } from './sign-out/sign-out.component';
+import { SearchComponent } from './search/search.component';
+import { FooterComponent } from './footer/footer.component';
 
 import { CurrencyPipe } from '../pipes/currency.pipe';
 import { FirstToUppercase } from '../pipes/first-to-uppercase.pipe';
@@ -35,9 +42,12 @@ import { DialogProductDirective } from '../directives/dialog-product.directive';
 import { FilterProductService } from '../services/filter-product.service';
 import { SortProductService } from '../services/sort-product.service';
 import { UserService } from '../services/user.service';
-import { ProfileComponent } from './profile/profile.component';
-import { DialogProfileComponent } from './dialog-profile/dialog-profile.component';
-import { SignOutComponent } from './sign-out/sign-out.component';
+import { SuccessOrderComponent } from './success-order/success-order.component';
+import { RegistrComponent } from './registr/registr.component';
+import { RegistrDialogComponent } from './registr-dialog/registr-dialog.component';
+import { ProfComponent } from './prof/prof.component';
+import { ProfDialogComponent } from './prof-dialog/prof-dialog.component';
+
 
 const routes: Routes = [
 { path: 'main', component: MainComponent },
@@ -60,12 +70,16 @@ const routes: Routes = [
     DialogProductDirective,
     SignInComponent,
     DialogSignInComponent,
-    RegistrationComponent,
-    DialogRegistrationComponent,
+    FormRegistrationComponent,
     AboutComponent,
-    ProfileComponent,
-    DialogProfileComponent,
-    SignOutComponent
+    SignOutComponent,
+    SearchComponent,
+    SuccessOrderComponent,
+    FooterComponent,
+    RegistrComponent,
+    RegistrDialogComponent,
+    ProfComponent,
+    ProfDialogComponent
   ],
   imports: [
     CommonModule,
@@ -76,12 +90,17 @@ const routes: Routes = [
     MatTableModule,
     MatButtonModule,
     MatCardModule,
+    MatFormFieldModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatMenuModule,
+    MatIconModule,
     ReactiveFormsModule,
     StoreModule.forRoot<any, any>({ addGoods: reducer }),
     RouterModule.forRoot(routes)
   ],
-  exports: [RouterModule, HeaderComponent],
+  exports: [RouterModule, HeaderComponent, FooterComponent],
   providers: [FilterProductService, SortProductService, UserService],
   bootstrap: [],
 })

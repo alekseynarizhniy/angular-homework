@@ -1,4 +1,4 @@
-import { Product, ProductAbstarct } from '../interfaces/product';
+import { Product, SaleProducts, ProductAbstarct } from '../interfaces/product';
 
 export class ProductWrapper implements ProductAbstarct {
   name: string;
@@ -11,6 +11,7 @@ export class ProductWrapper implements ProductAbstarct {
   country: string;
   filename: string;
   id: number;
+  sale?: SaleProducts;
 
   constructor(obj: Product) {
     this.name = obj.name;
@@ -19,6 +20,7 @@ export class ProductWrapper implements ProductAbstarct {
     this.quantity = obj.quantity;
     this.weight = obj.weight;
     this.price = obj.price;
+    if(obj.sale) this.sale = obj.sale;
     this.description = obj.description;
     this.country = obj.country;
     this.filename = obj.filename;

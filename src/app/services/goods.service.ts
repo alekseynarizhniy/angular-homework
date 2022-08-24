@@ -14,11 +14,11 @@ export class GoodsService {
   constructor(private data: DataService) {}
 
   public getGoodsServer(): void {
-    let sunscription: SubscriptionLike = this.data
+    let subscription: SubscriptionLike = this.data
       .getData(EXTRA_URL_GOODS)
       .subscribe((products) => {
         this.goods.next(products);
-        sunscription.unsubscribe();
+        subscription.unsubscribe();
       });
   }
 

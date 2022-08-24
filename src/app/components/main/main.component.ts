@@ -29,8 +29,7 @@ export class MainComponent implements OnInit, OnDestroy {
   public filteredGoods: ProductWrapper[] = [];
   public showGoods: ProductWrapper[] = [];
 
-  @ViewChild('paginator') paginator!: MatPaginator;
-
+  @ViewChild('paginator') paginator!: MatPaginator
 
   constructor(
     private productFilter: FilterProductService,
@@ -38,13 +37,14 @@ export class MainComponent implements OnInit, OnDestroy {
     private goodsService: GoodsService
   ) {}
 
+
   ngOnInit(): void {
-   this.subscription = this.goodsService.getGoods().subscribe((goods: ProductWrapper[]) => {
+    this.subscription = this.goodsService.getGoods().subscribe(products => {
       let setCountries = new Set<string>();
       let setTypes = new Set<string>();
       this.goods = [];
 
-      goods.forEach((product) => {
+      products.forEach((product) => {
         setCountries.add(product.country);
         setTypes.add(product.type);
         this.goods.push(new ProductWrapper(product));
@@ -53,25 +53,30 @@ export class MainComponent implements OnInit, OnDestroy {
       this.countries = Array.from(setCountries);
       this.types = Array.from(setTypes);
 
-      this.filteredGoods = this.goods;
-      this.goodsLength = this.filteredGoods.length;
-      this.showGoods = this.filteredGoods.slice(0, this.pageSize);
       this.productFilter.addGoods(this.goods);
+
+      this.productFilter.filteredGoods().subscribe( goods => {
+            this.filteredGoods = goods;
+            this.goodsLength = this.filteredGoods.length;
+            this.showGoods = this.filteredGoods.slice(0, this.pageSize);
+            if(this.paginator) this.paginator.firstPage();
+      });
+
     });
+
   }
+
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-
-  public filterElement(event: string, type: string): void  {
-    this.filteredGoods = this.productFilter.goodsFilter(type, event);
-    this.showGoods = this.filteredGoods.slice(0, this.pageSize);
-    this.paginator.firstPage();
+  public filterElement(type: string, value: string): void {
+    this.productFilter.addFilter(type, value);
   }
 
-  public sortElement(event: string): void  {
+  public sortElement(event: any): void {
+
     if (event === this.sortAZ) {
       this.filteredGoods = this.productSort.sortNameAZ(this.filteredGoods);
     } else if (event === this.sortZA) {
@@ -80,6 +85,14 @@ export class MainComponent implements OnInit, OnDestroy {
 
     this.showGoods = this.filteredGoods.slice(0, this.pageSize);
     this.paginator.firstPage();
+  }
+
+  public checkSales(event: any) {
+    if (event.checked) {
+      this.filterElement('sale', 'contain');
+    } else {
+      this.filterElement('sale', '');
+    }
   }
 
   public changePage(event: any) {
