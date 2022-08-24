@@ -1,6 +1,5 @@
-:host{
+:host {
   position: relative !important;
-  color: white;
 
   .bucket-table {
     width: 100%;
@@ -20,39 +19,26 @@
     }
 
     .mat-column-remove {
-      button{
+      button {
         margin: 3px 0 3px 0;
       }
     }
 
-    .dialog-image{
-               width: 20px;
-              height: 20px;
-            }
+    .dialog-image {
+      width: 20px;
+      height: 20px;
+    }
   }
 
-  .full-price{
+  .full-price {
+    color: white;
     font-size: 20px;
     text-shadow: 0 0 1em black, 0 0 0.2em black;
   }
 
-  .dialog-close{
+  .dialog-close {
     right: 5px;
     position: absolute;
     top: 5px;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-
-    img{
-      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(306deg) brightness(104%) contrast(101%);
-    }
-
-    &:hover img{
-      filter: invert(13%) sepia(38%) saturate(5993%) hue-rotate(320deg) brightness(120%) contrast(98%);
-    }
-
   }
-
-
 }

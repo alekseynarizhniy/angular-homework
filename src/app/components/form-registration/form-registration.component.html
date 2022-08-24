@@ -1,0 +1,55 @@
+<form ngClass="form-registration" [formGroup]="registrationGroup" (ngSubmit)="onSubmit()" >
+    <ng-content select=".form-tittle"></ng-content>
+    <mat-form-field class="form-field form-item form-login" appearance="fill">
+      <input name="login" type="text" matInput formControlName="login" required placeholder="Login"/>
+      <div class="alert alert-danger">
+        <span class="error-message login-message">{{ loginMessage }}</span>
+        <div *ngIf="login!.invalid && (login!.dirty || login!.touched)">
+          <div *ngFor="let error of login!.errors | keyvalue">
+            <div *ngIf="error.value">{{ errorLogin[error.key] }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field class="form-field form-item form-password" appearance="fill">
+      <input name="password" type="text" matInput formControlName="password" placeholder="Password"/>
+      <div class="alert alert-danger" >
+          <div *ngIf="password!.invalid && (password!.dirty || password!.touched)">
+            <div *ngFor="let error of password!.errors | keyvalue">
+              <div *ngIf="error.value">{{ errorPassword[error.key] }}</div>
+            </div>
+          </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field class="form-field form-item form-name" appearance="fill">
+      <input name="name" type="text" matInput formControlName="name" required placeholder="Name" />
+      <div class="alert alert-danger">
+        <div  *ngIf="name!.invalid && (name!.dirty || name!.touched)">
+          <div *ngFor="let error of name!.errors | keyvalue">
+            <div *ngIf="error.value">{{ errorName[error.key] }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field class="form-field form-item form-email" appearance="fill">
+      <input name="email" type="text" matInput formControlName="email"  placeholder="Email"/>
+      <div class="alert alert-danger" >
+        <div *ngIf="email!.invalid && (email!.dirty || email!.touched)">
+          <div *ngFor="let error of email!.errors | keyvalue">
+            <div *ngIf="error.value">{{ errorEmail[error.key] }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-form-field>
+    <mat-form-field class="form-field form-item form-address" appearance="fill">
+      <input name="address" type="text" matInput formControlName="address"  placeholder="Address"/>
+      <div class="alert alert-danger" >
+        <div *ngIf="address!.invalid && (address!.dirty || address!.touched)">
+          <div *ngFor="let error of address!.errors | keyvalue">
+            <div *ngIf="error.value">{{ errorAddress[error.key] }}</div>
+          </div>
+        </div>
+      </div>
+    </mat-form-field>
+    <ng-content select=".form-btn"></ng-content>
+</form>

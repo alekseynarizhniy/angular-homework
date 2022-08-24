@@ -1,33 +1,9 @@
-.dialog-registration {
+:host {
   position: relative;
-
-  .form-registration {
-    label {
-      display: block;
-      width: 100px;
-      margin-right: 15px;
-      margin-bottom: 3px;
-    }
-
-    .form-item{
-
-      input {
-        margin-right: 15px;
-      }
-
-    }
-
-    .alert{
-      color: red;
-      height: 35px;
-    }
-
-  }
-
-  .message {
-    color: red;
-    height: 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   .dialog-close {
     right: 10px;

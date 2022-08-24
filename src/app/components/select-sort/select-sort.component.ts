@@ -15,7 +15,6 @@ export class SelectSortComponent {
   @Output() newItemEvent = new EventEmitter<string>();
 
   onChange(element: any): void {
-    console.log(element.value)
     this.newItemEvent.emit(element.value);
   }
 }

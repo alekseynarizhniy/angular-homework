@@ -37,7 +37,7 @@
   </table>
   <p class="full-price">Full price {{ getFullPrice() | currency: "€" }}</p>
   <button mat-button class="accept-order" color="primary" (click)="acceptOrder()">Accept order</button>
-  <div type="button" class="dialog-close" (click)="onClose()">
-    <img [src]="closeIcon" alt="close-icon" />
-  </div>
+  <button class="dialog-close" matSuffix mat-icon-button aria-label="Clear" (click)="onClose()">
+    <mat-icon>close</mat-icon>
+  </button>
 </div>

@@ -1,7 +1,7 @@
-<mat-card [dialogProduct]="product">
-  <mat-card-subtitle>
+<mat-card  class="card" [dialogProduct]="product">
+  <mat-card-subtitle class="card-body" >
     <img [src]="product.filename" [alt]="product.name" />
-    <div class="card-body">
+    <div class="card-body-inner">
       <h2 class="card-title">{{ product.name }}</h2>
       <p class="card-text">{{ product.description }}</p>
       <div class="card-info">
