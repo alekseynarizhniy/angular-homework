@@ -32,23 +32,22 @@ export class ProfDialogComponent implements AfterViewInit, OnInit, OnDestroy, Af
   }
 
   ngAfterViewInit(): void {
-    const userFields = this.form;
+    const registrationGroup = this.form.registrationGroup;
 
-    userFields.login?.setValue(this.currentUser.login);
-    userFields.name?.setValue(this.currentUser.name);
-    userFields.password?.setValue(this.currentUser.password);
-    userFields.email?.setValue(this.currentUser.email);
-    userFields.address?.setValue(this.currentUser.address);
-    userFields.login?.disable();
+    registrationGroup.get('login')?.setValue(this.currentUser.login);
+    registrationGroup.get('name')?.setValue(this.currentUser.name);
+    registrationGroup.get('password')?.setValue(this.currentUser.password);
+    registrationGroup.get('email')?.setValue(this.currentUser.email);
+    registrationGroup.get('phone')?.setValue(this.currentUser.phone);
+    registrationGroup.get('address')?.setValue(this.currentUser.address);
+    registrationGroup.get('login')?.disable();
 
     const eventUserSubscription = this.form.newItemEvent.subscribe(user => {
-
         this.userService.updateUser({ ...this.currentUser, ...user });
         this.onClose();
     });
 
     this.subscriptions.push(eventUserSubscription);
-
   }
 
   ngAfterViewChecked(): void {
