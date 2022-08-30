@@ -17,18 +17,22 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select('addGoods').subscribe((goods: ProductWrapper[]) => {
-      const product = goods.find(
+      let product = goods.find(
         (product: ProductWrapper) => product.name === this.product.name
       );
 
-      if (product) this.goodsFromStore = product.quantity;
+      if (product) {
+        this.goodsFromStore = product.quantity;
+      } else {
+        this.goodsFromStore = 0;
+      }
     });
   }
 
   public addProduct(event: any) {
     event.stopPropagation();
 
-    if(this.goodsFromStore < this.product.quantity){
+    if (this.goodsFromStore < this.product.quantity) {
       let currentPruduct: ProductWrapper = Object.assign({}, this.product);
       currentPruduct.quantity = 1;
 

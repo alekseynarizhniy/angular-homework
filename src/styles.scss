@@ -4,6 +4,7 @@
   src: url(https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap);
 }
 
+
 html,
 body {
   height: 100%;
@@ -22,11 +23,12 @@ body {
 
 
 .mat-button.mat-primary {
-  border: solid 2px #673ab7 !important;
+  border: solid 2px rgb(49, 178, 62) !important;
+  color: rgb(49, 178, 62);
 
   &:hover {
     color: white;
-    background-color: #673ab7;
+    background-color: rgb(49, 178, 62);
     border: solid 2px white;
   }
 }
@@ -41,4 +43,39 @@ body {
     background-color: transparent;
     border: solid 2px gainsboro;
   }
+
+}
+
+
+.mat-primary{
+  color: rgb(49, 178, 62);;
+  border-color: rgb(49, 178, 62);
+}
+
+.mat-focused{
+  border-color: rgb(49, 178, 62);
+}
+
+.mat-form-field-appearance-fill:not(.mat-form-field-disabled) .mat-form-field-flex:hover~.mat-form-field-underline .mat-form-field-ripple {
+  background-color: rgb(49, 178, 62);
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: rgb(49, 178, 62);
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+  background-color: darkgray;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: rgb(49, 178, 62);
+}
+
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: rgb(49, 178, 62);
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: rgb(49, 178, 62);
 }

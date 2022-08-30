@@ -10,10 +10,12 @@ export class HightlightShadowDirective {
   @HostBinding('style.boxShadow') boxShadow!: string;
   @HostBinding('style.backgroundColor') backgroundColor!: string;
   @HostBinding('style.borderRadius') borderRadius!: string;
+  @HostBinding('style.zIndex') zIndex!: string;
 
   @HostListener('mouseenter') onMouseEnter(): void {
     this.boxShadow = this.shadow;
     this.borderRadius = '5px';
+    this.zIndex = '999';
   }
 
   @HostListener('mouseleave') onMouseLeave(): void {

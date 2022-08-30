@@ -1,13 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Subscription, SubscriptionLike } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { UserService } from 'src/app/services/user.service';
 
 import { RegistrDialogComponent } from '../registr-dialog/registr-dialog.component';
-
-import { User } from 'src/app/interfaces/users';
 
 import { DIALOG_WIDTH } from '../../constants/values';
 
@@ -26,18 +24,23 @@ export class DialogSignInComponent implements OnDestroy {
     private dialog: MatDialog
   ) {}
 
-  onSubmit(form: NgForm): void {
+  public onSubmit(form: NgForm): void {
     const value = form.value;
-    const userCheck = this.userService.checkUser(value.login, value.password).subscribe((val) => {
-      if (val) {
-        this.errorMessage = '';
-        this.onClose();
-      } else {
-        this.errorMessage = 'wrong login or password';
-      }
-    });
 
-    this.subscriptions.push(userCheck)
+    if (value.login.length && value.password.length) {
+      const userCheck = this.userService
+        .checkUser(value.login, value.password)
+        .subscribe((val: Boolean) => {
+          if (val) {
+            this.errorMessage = '';
+            this.onClose();
+          } else {
+            this.errorMessage = 'wrong login or password';
+          }
+        });
+
+      this.subscriptions.push(userCheck);
+    }
   }
 
   public onClose(): void {
@@ -55,5 +58,4 @@ export class DialogSignInComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
-
 }

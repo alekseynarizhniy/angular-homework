@@ -1,5 +1,6 @@
 <h3>Thanks for your order!</h3>
+<p>Wait for us to call and decide the delivery details.</p>
 <p>Copy of order will be send to your email!</p>
-<div type="button" class="dialog-close" (click)="onClose()">
-  <img [src]="closeIcon" alt="close-icon" />
-</div>
+<button class="dialog-close" matSuffix mat-icon-button aria-label="Clear" (click)="onClose()">
+  <mat-icon>close</mat-icon>
+</button>
