@@ -9,18 +9,5 @@
     right: 10px;
     top: 10px;
     position: absolute;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-
-    img {
-      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(306deg)
-        brightness(104%) contrast(101%);
-    }
-
-    &:hover img {
-      filter: invert(13%) sepia(38%) saturate(5993%) hue-rotate(320deg)
-        brightness(120%) contrast(98%);
-    }
   }
 }

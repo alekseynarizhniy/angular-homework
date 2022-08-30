@@ -17,6 +17,7 @@ export class UserService {
     login: '',
     password: '',
     email: '',
+    phone: '',
     address: '',
   });
 
@@ -29,18 +30,13 @@ export class UserService {
   public checkUser(login: string, password: string): Observable<boolean> {
     return new Observable((subscriber) => {
       this.getUsersFromServer().subscribe((users) => {
-        if (login.length && password.length) {
-          let user = users.find(
-            (element) =>
-              element.login === login && element.password === password
-          );
+        let user = users.find(
+          (element) => element.login === login && element.password === password
+        );
 
-          if (user) {
-            subscriber.next(true);
-            this.addUser(user);
-          } else {
-            subscriber.next(false);
-          }
+        if (user) {
+          subscriber.next(true);
+          this.addUser(user);
         } else {
           subscriber.next(false);
         }
@@ -51,15 +47,13 @@ export class UserService {
   public checkLogin(login: string): Observable<boolean> {
     return new Observable((subscriber) => {
       this.getUsersFromServer().subscribe((users) => {
-      const logins: string[] = [];
-      users.forEach((user: User) => logins.push(user.login));
-
-      if (!logins.includes(login)) {
-        subscriber.next(true);
-      }else {
-        subscriber.next(false);
-      }
-
+        const logins: string[] = [];
+        users.forEach((user: User) => logins.push(user.login));
+        if (logins.includes(login)) {
+          subscriber.next(true);
+        } else {
+          subscriber.next(false);
+        }
       });
     });
   }
