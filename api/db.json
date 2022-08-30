@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Strawberry",
       "type": "fruit",
-      "quantity": 4,
+      "quantity": 7,
       "weight": 1,
       "price": 29.45,
       "description": "Sweet fresh strawberry on the wooden table",
@@ -15,7 +15,7 @@
       "id": 2,
       "name": "Asparagus",
       "type": "vegetable",
-      "quantity": 7,
+      "quantity": 0,
       "weight": 1,
       "price": 18.95,
       "sale": 16.44,
@@ -27,7 +27,7 @@
       "id": 3,
       "name": "Legums",
       "type": "vegetable",
-      "quantity": 1,
+      "quantity": 8,
       "weight": 1,
       "price": 17.11,
       "description": "Raw legums on the wooden table",
@@ -38,7 +38,7 @@
       "id": 4,
       "name": "Hazelnut",
       "type": "vegetable",
-      "quantity": 2,
+      "quantity": 7,
       "weight": 1,
       "price": 27.35,
       "sale": 19.64,
@@ -50,7 +50,7 @@
       "id": 5,
       "name": "Lemon",
       "type": "fruit",
-      "quantity": 2,
+      "quantity": 7,
       "weight": 1,
       "price": 15.79,
       "description": "Rosemary, lemon and salt on the table",
@@ -82,7 +82,7 @@
     },
     {
       "id": 8,
-      "name": "Pears",
+      "name": "Pear",
       "type": "fruit",
       "quantity": 11,
       "weight": 1,
@@ -93,7 +93,7 @@
     },
     {
       "id": 9,
-      "name": "Oranges",
+      "name": "Orange",
       "type": "fruit",
       "quantity": 9,
       "weight": 1,
@@ -138,7 +138,7 @@
     },
     {
       "id": 13,
-      "name": "Plums",
+      "name": "Plum",
       "type": "fruit",
       "quantity": 12,
       "weight": 1,
@@ -165,6 +165,7 @@
       "login": "brbr",
       "password": "brbr",
       "email": "brbr@i.ua",
+      "phone": "1234567890",
       "address": "str. brbr, 45",
       "id": 1
     },
@@ -173,24 +174,54 @@
       "login": "obrobr",
       "password": "obrobr",
       "email": "obrobr@i.ua",
+      "phone": "1234567890",
       "address": "str. obrobr, 75",
       "id": 2
     },
     {
-      "name": "ffff b",
+      "name": "John",
       "login": "ffff",
-      "password": "ffff33",
+      "password": "ffff123",
       "email": "fffff@fgf.ff",
+      "phone": "1234567890",
       "address": "ffff 22, FF",
       "id": 3
-    },
+    }
+  ],
+  "orders": [
     {
-      "name": "fffffdfdfdf",
-      "login": "ffff2",
-      "password": "ffff2",
-      "email": "fff@fff.ff",
+      "name": "John",
+      "phone": "1234567890",
       "address": "ffff 22, FF",
-      "id": 4
+      "email": "fffff@fgf.ff",
+      "order": [
+        {
+          "name": "Lemon",
+          "type": "fruit",
+          "grownOn": "berry",
+          "quantity": 1,
+          "weight": 1,
+          "price": 15.79,
+          "description": "Rosemary, lemon and salt on the table",
+          "country": "Norway",
+          "filename": "https://st.depositphotos.com/1020804/2370/i/950/depositphotos_23707225-stock-photo-lemons-with-leaves.jpg",
+          "id": 5
+        },
+        {
+          "name": "Hazelnut",
+          "type": "vegetable",
+          "grownOn": "berry",
+          "quantity": 1,
+          "weight": 1,
+          "price": 27.35,
+          "sale": 19.64,
+          "description": "Hazelnut in black ceramic bowl on old wooden background. forest wealth. rustic style. selective focus",
+          "country": "Germany",
+          "filename": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn8Awn3HIFMgrntGhgUq6p7VGUZSE_9Cy9PXqRq4WUWZ0h8Xyd6DrUbgB1uLqh1OmkJUs&usqp=CAU",
+          "id": 4
+        }
+      ],
+      "id": 1
     }
   ]
 }

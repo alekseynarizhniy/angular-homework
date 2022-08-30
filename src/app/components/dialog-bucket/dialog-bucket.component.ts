@@ -3,8 +3,11 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { DIALOG_WIDTH } from 'src/app/constants/values';
+import { User } from 'src/app/interfaces/users';
+import { DataService } from 'src/app/services/data.service';
 
 import { GoodsService } from 'src/app/services/goods.service';
+import { UserService } from 'src/app/services/user.service';
 
 import { ProductWrapper } from '../../classes/product';
 
@@ -24,13 +27,15 @@ export class DialogBucketComponent implements OnInit, OnDestroy {
     'image',
     'remove',
   ];
-  public goods: ProductWrapper[] = [];
   private subscriptions: Subscription[] = [];
+  public goods: ProductWrapper[] = [];
   public bucketGoods: ProductWrapper[] = [];
 
   constructor(
     private dialogBucket: MatDialogRef<DialogBucketComponent>,
+    private dataService: DataService,
     private goodsService: GoodsService,
+    private userService: UserService,
     private dialog: MatDialog,
     private store: Store<any>
   ) {}
@@ -62,7 +67,7 @@ export class DialogBucketComponent implements OnInit, OnDestroy {
       (item) => (fullPrice += item.price * item.quantity)
     );
 
-    return Math.ceil(fullPrice);
+    return +fullPrice.toFixed(2);
   }
 
   public acceptOrder(): void {
@@ -75,6 +80,13 @@ export class DialogBucketComponent implements OnInit, OnDestroy {
 
         this.goodsService.updateProduct(currentProduct);
       });
+
+      let currentUser = this.userService.getUser().subscribe((user) => {
+        let order = {name: user.name, phone: user.phone, address: user.address, email: user.email,order: this.bucketGoods};
+        let sendData = this.dataService.addData('orders', order).subscribe(() => sendData.unsubscribe());
+      });
+
+      this.subscriptions.push(currentUser);
 
       this.clearBucker();
 

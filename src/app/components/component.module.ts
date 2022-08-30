@@ -30,6 +30,12 @@ import { AboutComponent } from './about/about.component';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { SearchComponent } from './search/search.component';
 import { FooterComponent } from './footer/footer.component';
+import { SuccessOrderComponent } from './success-order/success-order.component';
+import { RegistrComponent } from './registr/registr.component';
+import { RegistrDialogComponent } from './registr-dialog/registr-dialog.component';
+import { ProfComponent } from './prof/prof.component';
+import { ProfDialogComponent } from './prof-dialog/prof-dialog.component';
+import { FormRegistrationPartComponent } from './form-registration-part/form-registration-part.component';
 
 import { CurrencyPipe } from '../pipes/currency.pipe';
 import { FirstToUppercase } from '../pipes/first-to-uppercase.pipe';
@@ -42,17 +48,11 @@ import { DialogProductDirective } from '../directives/dialog-product.directive';
 import { FilterProductService } from '../services/filter-product.service';
 import { SortProductService } from '../services/sort-product.service';
 import { UserService } from '../services/user.service';
-import { SuccessOrderComponent } from './success-order/success-order.component';
-import { RegistrComponent } from './registr/registr.component';
-import { RegistrDialogComponent } from './registr-dialog/registr-dialog.component';
-import { ProfComponent } from './prof/prof.component';
-import { ProfDialogComponent } from './prof-dialog/prof-dialog.component';
-
 
 const routes: Routes = [
-{ path: 'main', component: MainComponent },
-{ path: 'about', component: AboutComponent },
-{ path: '**', component: MainComponent}
+  { path: 'main', component: MainComponent },
+  { path: 'about', component: AboutComponent },
+  { path: '**', component: MainComponent },
 ];
 
 @NgModule({
@@ -79,7 +79,8 @@ const routes: Routes = [
     RegistrComponent,
     RegistrDialogComponent,
     ProfComponent,
-    ProfDialogComponent
+    ProfDialogComponent,
+    FormRegistrationPartComponent,
   ],
   imports: [
     CommonModule,
@@ -98,7 +99,7 @@ const routes: Routes = [
     MatIconModule,
     ReactiveFormsModule,
     StoreModule.forRoot<any, any>({ addGoods: reducer }),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
   exports: [RouterModule, HeaderComponent, FooterComponent],
   providers: [FilterProductService, SortProductService, UserService],

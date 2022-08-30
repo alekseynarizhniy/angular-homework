@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {  FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { User } from '../../interfaces/users';
 
@@ -9,8 +9,8 @@ import {
   REGEX_LOGIN,
   REGEX_NAME,
   REGEX_PASSWORD,
+  REGEX_PHONE,
 } from '../../constants/values';
-
 
 @Component({
   selector: 'app-form-registration',
@@ -18,14 +18,14 @@ import {
   styleUrls: ['./form-registration.component.scss'],
 })
 export class FormRegistrationComponent {
-
-  public errorLogin = this.errorClone({name: 'Login', size: '4'});
-  public errorPassword =this.errorClone({name: 'Password', size: '6'});
-  public errorName = this.errorClone({name: 'Name', size: '4', get pattern () {  return "Only alphabetsallowed."} });
-  public errorEmail= this.errorClone({name: 'Email', get pattern () {  return "Incorrect email."}});
-  public errorAddress = this.errorClone({name: 'Address', size: '4', get minlength () {  return "Address to short."}});
-
   private minSize: number = 4;
+  public errorLogin = {name: 'Login', size: '4'};
+  public errorPassword = {name: 'Password', size: '6'};
+  public errorName = {name: 'Name', size: '4', get pattern () {  return "Only alphabetsallowed."} };
+  public errorEmail= {name: 'Email', get pattern () {  return "Incorrect email."} };
+  public errorPhone = {name: 'Phone', get pattern () {  return "Incorrect phone."} };
+  public errorAddress = {name: 'Address', size: '4', get minlength () {  return "Address to short."}};
+
   private userNameControl = new FormControl('', [
     Validators.required,
     Validators.minLength(this.minSize),
@@ -45,6 +45,7 @@ export class FormRegistrationComponent {
     Validators.required,
     Validators.pattern(REGEX_EMAIL),
   ]);
+  private phoneControl = new FormControl('',);
   private addressControl = new FormControl('', [
     Validators.required,
     Validators.minLength(this.minSize),
@@ -54,49 +55,15 @@ export class FormRegistrationComponent {
     login: this.loginControl,
     password: this.passwordControl,
     email: this.emailControl,
+    phone: this.phoneControl,
     address: this.addressControl,
   });
-  public loginMessage: string = '';
+
+  public extraMessage: string = '';
 
   @Output() newItemEvent = new EventEmitter<User>();
 
-  get name() {
-    return this.registrationGroup.get('name');
-  }
-
-  get login() {
-    return this.registrationGroup.get('login');
-  }
-
-  get password() {
-    return this.registrationGroup.get('password');
-  }
-
-  get email() {
-    return this.registrationGroup.get('email');
-  }
-
-  get address() {
-    return this.registrationGroup.get('address');
-  }
-
-  errorClone(obj: any){
-    const myErrors: Record<string, string> = {
-      name: '',
-      size: '',
-      get required () {  return  this['name'] + ' is required.'; } ,
-      get minlength () {  return this['name'] + ' must be at least ' + this['size'] + ' characters long.'; },
-      get pattern () {  return "Only alphabetsallowed and numbers."},
-      set required (val) {} ,
-      set minlength (val) {},
-      set pattern (val) {}
-    };
-
-    return Object.assign(myErrors, obj);
-  }
-
-
-    public onSubmit(): void {
+  public onSubmit(): void {
 
     if (this.registrationGroup.valid) {
       const user: User = this.registrationGroup.value as User;
